@@ -52,4 +52,10 @@ const moment = require('moment');
     console.log(solutions);
 })();
 
+//ho trovato le api che mi servivano
+// (spiego come funzionano)
+
+//trasformo in un progetto http con express
+//creo le mie API
+
 module.exports = app;
