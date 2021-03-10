@@ -13,9 +13,6 @@ submit(query: HTMLInputElement): void {
     if (!query.value) {
       return;
     }
-    this.query = query.value;
-    this.obsStati = this.stati_service.search(this.query);
-    this.obsStati.subscribe((data) => { this.nazioni = data; console.log(this.nazioni) });
   }
 
 }
