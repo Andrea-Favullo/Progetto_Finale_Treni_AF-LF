@@ -1,6 +1,33 @@
-<h1>Ricerca</h1>
+<router-outlet>
+    <!-- Sidebar -->
+    <div class="sidenav">
+      <div class="sidenav-heading">No Train, <br> No Rail </div>
+      <a href="#">Pagina Principale</a>
+      <a href="#">Ricerca</a>
+      <a href="#">Mappa</a>
+      <a href="#">Lista Stazioni</a>
+      <a href="#">Dizionario Percorsi</a>
+    </div>
+</router-outlet>
 
-<p>
-	<button (click)="richiesta()">Ricerca</button>
-</p>
-{{dati | json}}
+<div class="main">
+  <h1>Ricerca</h1>
+  <p>
+    Partenza:
+    <input type="text" #partenza value=" ">
+    <button (click)="richiesta()">Ricerca</button>
+  </p>
+  <p>
+    Destinazione:
+    <input type="text" #destinazione value=" ">
+    <button (click)="richiesta()">Ricerca</button>
+  </p>
+  <h3>Oppure:</h3>
+  <p>
+    Numero Treno:
+    <input type="text" #destinazione value=" ">
+    <button (click)="richiesta()">Ricerca</button>
+  </p>
+  {{dati | json}}
+</div>
+
