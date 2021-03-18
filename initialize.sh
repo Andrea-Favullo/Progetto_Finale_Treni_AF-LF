@@ -7,5 +7,6 @@ npm i ;
 cd ../server ;
 npm i cors ;
 npm i mongodb ;
-npm i express
+npm i express ;
+npm i api-trenitalia ;
 npm i ;
