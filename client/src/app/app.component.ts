@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
 
 
   richiesta(): void {
-    this.obs = this.trenitalia.ricercaPartenzaArrivo();
+    this.obs = this.trenitalia.ricercaEsempio();
     this.obs.subscribe((data) => {
       this.dati = data;
       console.log(this.dati)

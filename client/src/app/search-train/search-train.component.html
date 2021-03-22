@@ -1,1 +1,21 @@
-<p>search-train works!</p>
+<div class="main">
+  <h1>Ricerca</h1>
+  <p>
+    Partenza:
+    <input type="text" #partenza value=" ">
+  </p>
+  <p>
+    Destinazione:
+    <input type="text" #destinazione value=" ">
+  </p>
+  <p>
+    <button (click)="richiesta()">Ricerca</button>
+  </p>
+  <h3>Oppure:</h3>
+  <p>
+    Numero Treno:
+    <input type="text" #numerotreno value=" ">
+    <button (click)="richiesta()">Ricerca</button>
+  </p>
+  {{dati | json}}
+</div>

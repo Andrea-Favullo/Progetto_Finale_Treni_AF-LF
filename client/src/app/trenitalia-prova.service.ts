@@ -5,12 +5,19 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class TrenitaliaProvaService {
-  serverURL="https://3000-coral-frog-mgt0j6or.ws-eu03.gitpod.io/";
+  serverURL="https://3000-coral-frog-mgt0j6or.ws-eu03.gitpod.io";
 
   constructor(private http: HttpClient) { }
 
-  ricercaPartenzaArrivo(){
-    const url = `${this.serverURL}`
+  ricercaEsempio(){
+    const url = `${this.serverURL}/`
+    let obs = this.http.get(url);
+    console.log(obs);
+    return obs;
+  }
+
+  ricercaPartenzaArrivo(origin : string, destination : string){
+    const url = `${this.serverURL}/${origin}/${destination}`
     let obs = this.http.get(url);
     console.log(obs);
     return obs;
