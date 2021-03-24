@@ -2,14 +2,14 @@
   <h1>Ricerca</h1>
   <p>
     Partenza:
-    <input type="text" #partenza value=" ">
+    <input type="text" #partenza value="">
   </p>
   <p>
     Destinazione:
-    <input type="text" #destinazione value=" ">
+    <input type="text" #destinazione value="">
   </p>
   <p>
-    <button (click)="richiesta()">Ricerca</button>
+    <button (click)="richiestaPartenzaDestinazione(partenza, destinazione)">Ricerca</button>
   </p>
   <h3>Oppure:</h3>
   <p>

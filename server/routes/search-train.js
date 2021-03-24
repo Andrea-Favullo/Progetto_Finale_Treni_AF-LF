@@ -22,13 +22,32 @@ router.get('/', function (req, res, next) {
     })();
 });
 
-router.get('/:DepartureStation/:ArrivalStation', function (req, res, next) {
+router.get('/from-to/:DepartureStation/:ArrivalStation', function (req, res, next) {
     
     const departure_station = req.params.DepartureStation;
     const arrival_station = req.params.ArrivalStation;
 
     console.log(departure_station)
     console.log(arrival_station)
+
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    (async () => {
+        const t = new Trenitalia();
+        const station_from = departure_station;
+        const station_to = arrival_station;
+
+        const date = moment().format("DD/MM/YYYY");
+        const solutions = await t.getOneWaySolutions(station_from, station_to, date, "13", 2, 0);
+        console.log(solutions)
+        res.send(solutions);
+    })();
+});
+router.get('/train-id/:trainID', function (req, res, next) {
+    
+    const train_id = req.params.trainID;
+
+    console.log(train_id)
 
     res.setHeader('Access-Control-Allow-Origin', '*');
 

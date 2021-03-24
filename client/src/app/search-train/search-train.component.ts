@@ -25,8 +25,8 @@ export class SearchTrainComponent implements OnInit {
     });
   }
 
-  richiestaPartenzaDestinazione(partenza: string, destinazione: string): void {
-    this.obs = this.trenitalia.ricercaPartenzaArrivo(partenza, destinazione);
+  richiestaPartenzaDestinazione(partenza: HTMLInputElement, destinazione: HTMLInputElement): void {
+    this.obs = this.trenitalia.ricercaPartenzaArrivo(partenza.value, destinazione.value);
     this.obs.subscribe((data) => {
       this.dati = data;
       console.log(this.dati)
