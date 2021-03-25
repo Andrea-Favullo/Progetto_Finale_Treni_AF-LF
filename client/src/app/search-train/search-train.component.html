@@ -17,5 +17,26 @@
     <input type="text" #numerotreno value=" ">
     <button (click)="richiesta()">Ricerca</button>
   </p>
-  {{dati | json}}
+
+  <div class="card-columns">
+		<div *ngFor="let treno of dati" class="card">
+        <hr>
+	<!--		<div *ngIf="treno.poster; else elseBlock1"> <img class="card-img-top" alt="Movie Poster" [src]="photoURL(movie.poster)"> </div> -->
+  <!--         <ng-template #elseBlock1>
+                <span class="alert alert-info" role="alert"><strong>Info!</strong> Immagine mancante</span>
+            </ng-template>-->
+            <div class="card-body text-center">
+                <h4 class="card-title">{{treno.origin}} - {{treno.destination}}</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">{{treno.origin}}</li>
+              <li class="list-group-item">{{treno.destination}}</li>
+            </ul>
+
+        </div>
+    </div>
+
 </div>
+  {{dati | json}}
+
+
