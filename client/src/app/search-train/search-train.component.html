@@ -29,8 +29,14 @@
                 <h4 class="card-title">{{treno.origin}} - {{treno.destination}}</h4>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">{{treno.origin}}</li>
-              <li class="list-group-item">{{treno.destination}}</li>
+              <li class="list-group-item">
+                  <h5>Treni:</h5>
+                <p *ngFor="let numerotreno of treno.trainlist">
+                    {{numerotreno.trainidentifier}}
+                </p>
+              </li>
+              <li class="list-group-item"><h5>Partenza:</h5>{{treno.departuretime}}</li>
+              <li class="list-group-item"><h5>Arrivo:</h5>{{treno.arrivaltime}}</li>
             </ul>
 
         </div>
