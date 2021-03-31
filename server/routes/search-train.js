@@ -3,7 +3,6 @@ var router = express.Router();
 var Trenitalia = require("api-trenitalia");
 var moment = require('moment');
 
-/* GET home page. */
 router.get('/', function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -20,7 +19,6 @@ router.get('/', function (req, res, next) {
         
         id_solution = solutions[0]["idsolution"]
         console.log(id_solution)
-        //test login
         solution = t.getSolutionInfo(id_solution);
         
         console.log(solution)
@@ -52,21 +50,10 @@ router.get('/from-to/:DepartureStation/:ArrivalStation', function (req, res, nex
 router.get('/train-id/:trainID', function (req, res, next) {
     
     const train_id = req.params.trainID;
-
     console.log(train_id)
 
-    res.setHeader('Access-Control-Allow-Origin', '*');
-
-    (async () => {
-        const t = new Trenitalia();
-        const station_from = departure_station;
-        const station_to = arrival_station;
-
-        const date = moment().format("DD/MM/YYYY");
-        const solutions = await t.getOneWaySolutions(station_from, station_to, date, "13", 2, 0);
-        console.log(solutions)
-        res.send(solutions);
-    })();
+    //ricercare come fare la ricerca tramite id
+    //probabilmente facendo una query complessa trainlist -> trainidentifier
 });
 
 module.exports = router;

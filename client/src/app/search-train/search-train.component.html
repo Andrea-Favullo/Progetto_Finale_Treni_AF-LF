@@ -2,40 +2,40 @@
   <h1>Ricerca</h1>
   <p>
     Partenza:
-    <input type="text" #partenza value="">
+    <input type="text" #partenza value="" class="form-control w-25">
   </p>
   <p>
     Destinazione:
-    <input type="text" #destinazione value="">
+    <input type="text" #destinazione value="" class="form-control w-25">
   </p>
   <p>
-    <button (click)="richiestaPartenzaDestinazione(partenza, destinazione)">Ricerca</button>
+    <button (click)="richiestaPartenzaDestinazione(partenza, destinazione)" type="button" class="btn btn-dark">Ricerca</button>
   </p>
   <h3>Oppure:</h3>
   <p>
     Numero Treno:
-    <input type="text" #numerotreno value=" ">
-    <button (click)="richiesta()">Ricerca</button>
+    <input type="text" #numerotreno value="" class="form-control w-25">
+    <button (click)="richiesta()" type="button" class="btn btn-dark">Ricerca</button>
   </p>
 
   <div class="card-columns">
-		<div *ngFor="let treno of dati" class="card">
-        <hr>
+		<div *ngFor="let treno of dati" class="card card w-55">
 	<!--		<div *ngIf="treno.poster; else elseBlock1"> <img class="card-img-top" alt="Movie Poster" [src]="photoURL(movie.poster)"> </div> -->
   <!--         <ng-template #elseBlock1>
                 <span class="alert alert-info" role="alert"><strong>Info!</strong> Immagine mancante</span>
             </ng-template>-->
             <div class="card-body text-center">
-                <h4 class="card-title">{{treno.origin}} - {{treno.destination}}</h4>
+                <h4 class="card-title">{{treno.origin}} <br /> {{treno.destination}}</h4>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                  <h5>Treni:</h5>
+                  <h5>Treni da utilizzare:</h5>
                 <p *ngFor="let numerotreno of treno.trainlist">
-                    {{numerotreno.trainidentifier}}
+                    {{numerotreno.traintype}} {{numerotreno.trainacronym}} {{numerotreno.trainidentifier}}
                 </p>
               </li>
               <li class="list-group-item"><h5>Partenza:</h5>{{treno.departuretime}}</li>
+              <li class="list-group-item"><h5>Durata del Viaggio:</h5>{{treno.duration}}</li>
               <li class="list-group-item"><h5>Arrivo:</h5>{{treno.arrivaltime}}</li>
             </ul>
 
