@@ -23,4 +23,11 @@ export class TrenitaliaProvaService {
     return obs;
   }
 
+  ricercaNomeStazione(name: string){
+    const url = `${this.serverURL}/search-station/name/${name}`
+    let obs = this.http.get(url);
+    console.log(obs);
+    return obs;
+  }
+
 }

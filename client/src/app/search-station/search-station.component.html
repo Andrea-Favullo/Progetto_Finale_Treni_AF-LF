@@ -2,7 +2,39 @@
   <h1>Lista Stazioni</h1>
   <p>
     Stazione:
-    <input type="text" #stazione value="" class="form-control w-25">
-    <button class="btn btn-dark">Ricerca</button>
+    <input type="text" #nomestazione value="" class="form-control w-25">
+    <button (click)="richiestaNomeStazione(nomestazione)" class="btn btn-dark">Ricerca</button>
   </p>
+
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Stazione</th>
+      <th scope="col">Regione</th>
+      <th scope="col">Città</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Esempio</td>
+      <td>Esempio</td>
+      <td>Esempio</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Esempio</td>
+      <td>Esempio</td>
+      <td>Esempio</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Esempio</td>
+      <td>Esempio</td>
+      <td>Esempio</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+{{dati | json}}
