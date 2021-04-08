@@ -17,33 +17,32 @@ router.get('/', function (req, res, next) {
         const date = moment().format("DD/MM/YYYY");
         const solutions = await t.getOneWaySolutions(station_from, station_to, date, "13", 2, 0);
         
-        id_solution = solutions[0]["idsolution"]
-        console.log(id_solution)
-        solution = t.getSolutionInfo(id_solution);
-        
-        console.log(solution)
-        res.send(solution);
+        console.log(solutions)
+        res.send(solutions);
     })();
 });
 
 router.get('/from-to/:DepartureStation/:ArrivalStation', function (req, res, next) {
     
-    const departure_station = req.params.DepartureStation;
-    const arrival_station = req.params.ArrivalStation;
-
-    console.log(departure_station)
-    console.log(arrival_station)
-
+    
     res.setHeader('Access-Control-Allow-Origin', '*');
 
     (async () => {
         const t = new Trenitalia();
-        const station_from = departure_station;
-        const station_to = arrival_station;
+
+        const input_station_from = req.params.DepartureStation;
+        const input_station_to = req.params.ArrivalStation;
+
+        console.log(input_station_from)
+        console.log(input_station_to)
+
+        const stations_from = await t.autocomplete(input_station_from);
+        const stations_to = await t.autocomplete(input_station_to);
 
         const date = moment().format("DD/MM/YYYY");
-        const solutions = await t.getOneWaySolutions(station_from, station_to, date, "13", 2, 0);
-        console.log(solutions)
+        const solutions = await t.getOneWaySolutions(stations_from[0].name, stations_to[0].name, date, "13", 2, 0);
+
+        console.log(solutions);
         res.send(solutions);
     })();
 });
@@ -52,8 +51,26 @@ router.get('/train-id/:trainID', function (req, res, next) {
     const train_id = req.params.trainID;
     console.log(train_id)
 
-    //ricercare come fare la ricerca tramite id
-    //probabilmente facendo una query complessa trainlist -> trainidentifier
+    var http = require('http');
+    var options = {
+        host: 'www.viaggiatreno.it',
+        path: `/viaggiatrenonew/resteasy/viaggiatreno/cercaNumeroTreno/${train_id}`
+    };
+
+    callback = function(response) {
+        var str = '';
+        response.on('data', function (chunk) {
+            str += chunk;
+        });
+        response.on('end', function () {
+            console.log(str)
+            str = JSON.parse(str)
+            console.log(str);
+            res.send( new Date(str.dataPartenza) )
+        });
+    }
+
+    http.request(options, callback).end()
 });
 
 module.exports = router;
