@@ -3,6 +3,8 @@
   <p>
     Stazione:
     <input type="text" #nomestazione value="" class="form-control w-25">
+  </p>
+  <p>
     <button (click)="richiestaNomeStazione(nomestazione)" class="btn btn-dark">Ricerca</button>
   </p>
 
@@ -12,29 +14,16 @@
       <th scope="col">id</th>
       <th scope="col">Stazione</th>
       <th scope="col">Regione</th>
-      <th scope="col">Città</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Esempio</td>
-      <td>Esempio</td>
-      <td>Esempio</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Esempio</td>
-      <td>Esempio</td>
-      <td>Esempio</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Esempio</td>
-      <td>Esempio</td>
-      <td>Esempio</td>
+    <tr *ngFor="let stazione of dati">
+      <th scope="row">{{stazione.id_staz}}</th>
+      <td>{{stazione.name}}</td>
+      <td>{{stazione.regione}}</td>
     </tr>
   </tbody>
 </table>
+<!--{{dati | json}} -->
 </div>
-{{dati | json}}
+
