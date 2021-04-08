@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { SearchTrainComponent } from './search-train/search-train.component';
 import { SearchStationComponent } from './search-station/search-station.component';
 import { RouteDictionaryComponent } from './route-dictionary/route-dictionary.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { RouteDictionaryComponent } from './route-dictionary/route-dictionary.co
     HomeComponent,
     SearchTrainComponent,
     SearchStationComponent,
-    RouteDictionaryComponent
+    RouteDictionaryComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
