@@ -7,13 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { SearchTrainComponent } from './search-train/search-train.component';
 import { SearchStationComponent } from './search-station/search-station.component';
+import { RouteDictionaryComponent } from './route-dictionary/route-dictionary.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SearchTrainComponent,
-    SearchStationComponent
+    SearchStationComponent,
+    RouteDictionaryComponent
   ],
   imports: [
     BrowserModule,
