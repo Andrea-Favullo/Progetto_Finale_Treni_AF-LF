@@ -34,9 +34,9 @@
                     {{numerotreno.traintype}} {{numerotreno.trainacronym}} {{numerotreno.trainidentifier}}
                 </p>
               </li>
-              <li class="list-group-item"><h5>Partenza:</h5>{{treno.departuretime}}</li>
+              <li class="list-group-item"><h5>Partenza:</h5>{{this.ConvOrario(treno.departuretime)}}</li>
               <li class="list-group-item"><h5>Durata del Viaggio:</h5>{{treno.duration}}</li>
-              <li class="list-group-item"><h5>Arrivo:</h5>{{treno.arrivaltime}}</li>
+              <li class="list-group-item"><h5>Arrivo:</h5>{{this.ConvOrario(treno.arrivaltime)}}</li>
             </ul>
 
         </div>

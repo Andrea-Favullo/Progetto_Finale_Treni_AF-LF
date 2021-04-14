@@ -1,3 +1,20 @@
 <div class="main">
   <h1>Mappa</h1>
+  <p>
+    Stazione:
+    <input type="text" #nomestazione value="" class="form-control w-25">
+  </p>
+  <p>
+    <button (click)="richiestaPosizioneStazione(nomestazione)" class="btn btn-dark">Ricerca</button>
+  </p>
+  <!--Centriamo la mappa alle nostre coordinate-->
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <!--Mettiamo un marker alle nostre coordinate-->
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker> <!--TEST MARKER (rimuovere durante presa dati)-->
+
+    <div *ngFor="let stazione of dati">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker> <!--Mettere le coordinate dei dati-->
+    </div>
+    <!--{{stazione.coordinates[0]}}-->
+</agm-map>
 </div>

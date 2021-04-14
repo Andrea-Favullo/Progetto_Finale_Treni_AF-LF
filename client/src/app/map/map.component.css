@@ -5,3 +5,8 @@
   padding: 0px 10px;
   font-family: "Microsoft Tai Le";
 }
+
+agm-map
+{
+  height: 800px;
+}

@@ -14,8 +14,13 @@ export class SearchTrainComponent implements OnInit {
 
   constructor(public trenitalia: TrenitaliaProvaService){}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
+  ConvOrario(ms : any): any {
+    var date = new Date(ms);
+    return date;
+  }
 
   richiesta(): void {
     this.obs = this.trenitalia.ricercaEsempio();
