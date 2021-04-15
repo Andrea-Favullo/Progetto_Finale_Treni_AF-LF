@@ -15,7 +15,7 @@ router.get('/', function (req, res, next) {
         const station_to = stations_to[0].name;
 
         const date = moment().format("DD/MM/YYYY");
-        const solutions = await t.getOneWaySolutions(station_from, station_to, date, "13", 2, 0);
+        const solutions = await t.getOneWaySolutions(station_from, station_to, date, "13", 1, 0);
         
         console.log(solutions)
         res.send(solutions);
@@ -48,6 +48,8 @@ router.get('/from-to/:DepartureStation/:ArrivalStation', function (req, res, nex
 });
 router.get('/train-id/:trainID', function (req, res, next) {
     
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
     const train_id = req.params.trainID;
     console.log(train_id)
 
@@ -66,7 +68,13 @@ router.get('/train-id/:trainID', function (req, res, next) {
             console.log(str)
             str = JSON.parse(str)
             console.log(str);
-            res.send( new Date(str.dataPartenza) )
+            res.send( JSON.parse(`{"numeroTreno": "${str.numeroTreno}",
+            "codLocOrig": "${str.codLocOrig}",
+            "descLocOrig": "${str.descLocOrig}",
+            "dataPartenza": "${new Date(str.dataPartenza)}",
+            "corsa": "${str.corsa}",
+            "h24": ${str.h24}
+            }`) )
         });
     }
 

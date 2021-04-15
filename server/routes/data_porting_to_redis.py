@@ -13,15 +13,11 @@ database_mongo = collection.find()
 database_mongo = pd.DataFrame(list(database_mongo))
 print(database_mongo)
 for index, row in tqdm(database_mongo.iterrows()):
-    comando = '\"id_staz\": \"{}\", \"coordinates\": [\"{}\", \"{}\"], \"id_reg\": \"{}\", \"regione\": \"{}\"'.format(
-        str(row['id_staz']),
-        float(row['coordinates'][0]),
-        float(row['coordinates'][1]),
-        int(row['id_reg']),
-        str(row['regione'])
-    )
-    r.execute_command('JSON.SET', row['name'], '.', "{" + comando + "}")
-    
-
-reply = json.loads(r.execute_command('JSON.GET', 'Milano Lambrate'))
+    #lat -> maggiore    row['coordinates'][1]
+    #lon -> minore      row['coordinates'][0]
+    #comando = "".format()
+    #r.execute_command('GEOADD', comando)
+    r.geoadd(row['name'], row['coordinates'][0], row['coordinates'][1])
+    break
+reply = json.loads(r.execute_command('JSON.GET', 'Africo Nuovo'))
 print(reply)
