@@ -37,4 +37,42 @@ export class SearchTrainComponent implements OnInit {
       console.log(this.dati)
     });
   }
+
+  richiestaIdTreno(id: HTMLInputElement): void {
+    let id_value = id.value;
+    this.obs = this.trenitalia.ricercaIdTreno(id_value);
+    this.obs.subscribe((data) => {
+      //RICORDARSI DI CAMBIARE QUANDO FINITO
+      //this.dati = data;
+      //console.log(this.dati)
+      console.log(data)
+    });
+  }
+  toText(duration: string): string{
+
+    let splitted = duration.split(":");
+    let result = "";
+    let ore = splitted[0];
+    let minuti = splitted[1];
+
+    if(ore != "00"){
+
+      if (ore.charAt(0)=="0"){
+        ore = ore.charAt(1)
+      }
+      result = result + ore + " ore "
+
+      if (minuti.charAt(0)=="0"){
+        minuti = minuti.charAt(1)
+      }
+      result = result + minuti + " minuti "
+    }else{
+      if (minuti.charAt(0)=="0"){
+        minuti = minuti.charAt(1)
+      }
+      result = result + minuti + " minuti "
+    }
+
+    return result;
+  }
 }

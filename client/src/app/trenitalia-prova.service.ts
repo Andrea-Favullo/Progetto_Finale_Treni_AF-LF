@@ -5,12 +5,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class TrenitaliaProvaService {
-  serverURL="https://3000-plum-flamingo-sda82ccv.ws-eu03.gitpod.io";
+  serverURL="https://3000-copper-boa-67hesovj.ws-eu03.gitpod.io";
 
   constructor(private http: HttpClient) { }
 
   ricercaEsempio(){
-    const url = `${this.serverURL}/search-train/from-to/`
+    const url = `${this.serverURL}/search-train/`
     let obs = this.http.get(url);
     console.log(obs);
     return obs;
@@ -25,6 +25,13 @@ export class TrenitaliaProvaService {
 
   ricercaNomeStazione(name: string){
     const url = `${this.serverURL}/search-station/name/${name}`
+    let obs = this.http.get(url);
+    console.log(obs);
+    return obs;
+  }
+
+  ricercaIdTreno(id: string){
+    const url = `${this.serverURL}/search-train/train-id/${id}`
     let obs = this.http.get(url);
     console.log(obs);
     return obs;

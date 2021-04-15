@@ -10,6 +10,7 @@ import { SearchStationComponent } from './search-station/search-station.componen
 import { RouteDictionaryComponent } from './route-dictionary/route-dictionary.component';
 import { AgmCoreModule } from '@agm/core';
 import { MapComponent } from './map/map.component';
+import { MarkerService } from './marker.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { MapComponent } from './map/map.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    MarkerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

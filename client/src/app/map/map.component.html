@@ -7,14 +7,21 @@
   <p>
     <button (click)="richiestaPosizioneStazione(nomestazione)" class="btn btn-dark">Ricerca</button>
   </p>
-  <!--Centriamo la mappa alle nostre coordinate-->
+  <!--Leaflet-->
+  <div class="map-container">
+  <div class="map-frame">
+    <div id="map"></div>
+  </div>
+  </div>
+
+  <!-- GOOGLE MAPS
   <agm-map [latitude]="lat" [longitude]="lng">
-    <!--Mettiamo un marker alle nostre coordinate-->
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker> <!--TEST MARKER (rimuovere durante presa dati)-->
+
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
 
     <div *ngFor="let stazione of dati">
-      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker> <!--Mettere le coordinate dei dati-->
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
     </div>
-    <!--{{stazione.coordinates[0]}}-->
-</agm-map>
+    {{stazione.coordinates[0]}}
+</agm-map> -->
 </div>

@@ -1,6 +1,10 @@
 <div class="main">
   <h1>Ricerca</h1>
   <p>
+
+    <input type="button" value="Provami!" (click)="richiesta()" class="btn btn-danger">
+  </p>
+  <p>
     Partenza:
     <input type="text" #partenza value="" class="form-control w-25">
   </p>
@@ -15,7 +19,7 @@
   <p>
     Numero Treno:
     <input type="text" #numerotreno value="" class="form-control w-25">
-    <button (click)="richiesta()" type="button" class="btn btn-dark">Ricerca</button>
+    <button (click)="richiestaIdTreno(numerotreno)" type="button" class="btn btn-dark">Ricerca</button>
   </p>
 
   <div class="card-columns">
@@ -35,8 +39,9 @@
                 </p>
               </li>
               <li class="list-group-item"><h5>Partenza:</h5>{{this.ConvOrario(treno.departuretime)}}</li>
-              <li class="list-group-item"><h5>Durata del Viaggio:</h5>{{treno.duration}}</li>
+              <li class="list-group-item"><h5>Durata del Viaggio:</h5>{{ this.toText(treno.duration) }}</li>
               <li class="list-group-item"><h5>Arrivo:</h5>{{this.ConvOrario(treno.arrivaltime)}}</li>
+              <li class="list-group-item"><h5>Prezzo Calcolato:</h5>{{treno.originalPrice}} €</li>
             </ul>
 
         </div>
