@@ -1,6 +1,10 @@
 import os
 
-percorso = input("Inserisci percorso dal quale salvare le modifiche\n(scrivi \"*\" per salvare tutto)\n(scrivi \"q\" per annullare)\n")
+percorso = input("""Inserisci il percorso dal quale salvare le modifiche
+- (scrivi \"*\" per salvare tutto)
+- (scrivi \"c\" per salvare il client)
+- (scrivi \"s\" per salvare il server)
+- (scrivi \"q\" per annullare)\n""")
 
 if(percorso.replace(" ", "") == ""):
 
@@ -10,6 +14,11 @@ elif percorso.replace(" ", "") != "q":
     messaggio = input("\nInserisci messaggio commit\n(scrivi \"q\" per annullare)\n")
     if messaggio!="q":
 
+        if percorso=="c":
+            percorso = "./client/*"
+
+        if percorso=="s":
+            percorso = "./server/*"
         cmd = 'git add {} ; git commit -m \"{}\" ; git push origin master'.format(percorso, messaggio)
         os.system(cmd)
-        print("[!ATTENZIONE!] I DATI SONO STATI CORRETTAMENTE SALVATI SUL REPOSITORY! [!ATTENZIONE!]")
+        print("[!SUCCESSO!] I DATI SONO STATI CORRETTAMENTE SALVATI SUL REPOSITORY! [!SUCCESSO!]")
