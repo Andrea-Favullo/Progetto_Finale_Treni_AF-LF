@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class TrenitaliaProvaService {
-  serverURL="https://3000-copper-boa-67hesovj.ws-eu03.gitpod.io";
+  serverURL="https://3000-coral-crocodile-djc90thf.ws-eu03.gitpod.io";
 
   constructor(private http: HttpClient) { }
 

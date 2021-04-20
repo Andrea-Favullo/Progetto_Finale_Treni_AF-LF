@@ -69,13 +69,14 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.markerService.makeStationMarkers(this.map);
+    //this.markerService.makeStationMarkers(this.map);
   }
 
   richiestaPosizioneStazione(nomestazione: HTMLInputElement): void {
     this.obs = this.trenitalia.ricercaNomeStazione(nomestazione.value);
     this.obs.subscribe((data) => {
       this.dati = data;
+      this.markerService.makeStationMarkers(this.map, this.dati);
       console.log(this.dati)
     });
   }
