@@ -10,11 +10,11 @@ const iconDefault = L.icon({
   iconRetinaUrl,
   iconUrl,
   shadowUrl,
-  iconSize: [32, 32], //[25, 41]
+  iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   tooltipAnchor: [16, -28],
-  shadowSize: [32, 32] //[41, 41]
+  shadowSize: [41, 41],
 });
 L.Marker.prototype.options.icon = iconDefault;
 
@@ -73,6 +73,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   richiestaPosizioneStazione(nomestazione: HTMLInputElement): void {
+    //this.markerService.clearStationMarkers();
     this.obs = this.trenitalia.ricercaNomeStazione(nomestazione.value);
     this.obs.subscribe((data) => {
       this.dati = data;

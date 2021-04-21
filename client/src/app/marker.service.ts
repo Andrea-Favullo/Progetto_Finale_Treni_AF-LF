@@ -36,18 +36,19 @@ export class MarkerService {
         const marker = L.marker([lat, lon]);
 
         marker.addTo(map);
+        //marker.removeFrom(map);
       }
   }
 
-  /*makeStationMarkers(map: any): void {
-    this.http.get(this.stations).subscribe((res: any) => {
-      for (const c of res.features) {
-        const lon = c.geometry.coordinates[0];
-        const lat = c.geometry.coordinates[1];
+  clearStationMarkers(map: any, dati : any): void {
+    /*let stazioni = dati;
+      console.log(stazioni);
+      for (const c of stazioni) {
+        const lon = c.coordinates[0];
+        const lat = c.coordinates[1];
         const marker = L.marker([lat, lon]);
 
-        marker.addTo(map);
-      }
-    });
-  } */
+        marker.removeFrom(map);
+      }*/
+  }
 }
