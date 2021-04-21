@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var Trenitalia = require("api-trenitalia");
 var moment = require('moment');
+var request = require('request');
+var DomParser = require('dom-parser');
 
 router.get('/', function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -49,14 +51,38 @@ router.get('/from-to/:DepartureStation/:ArrivalStation', function (req, res, nex
 router.get('/train-id/:trainID', function (req, res, next) {
     
     res.setHeader('Access-Control-Allow-Origin', '*');
-
+    //https://www.trenord.it/rest/render/train-details?trainId=10581
     const train_id = req.params.trainID;
+
     console.log(train_id)
 
+    request(`https://www.trenord.it/rest/render/train-sub-detail?trainId=${train_id}`, function (error, response, body) {
+        console.error('error:', error);
+        console.log('statusCode:', response && response.statusCode);
+
+        body = JSON.parse(body)['message']
+        //console.log(body)
+        //icon-train-prossimi
+
+        var parser = new DomParser();
+//test con file HTML
+//libreria web scraping
+//microservizio python, flask api
+        var doc = parser.parseFromString(body, "text/html");
+        
+        var esempio = doc.getElementsByClassName("departure");
+        console.log(esempio)
+        var list = doc.getElementsByTagName("div");
+        console.log( list )
+        res.send( body );
+
+    });
+
+/*
     var http = require('http');
     var options = {
-        host: 'www.viaggiatreno.it',
-        path: `/viaggiatrenonew/resteasy/viaggiatreno/cercaNumeroTreno/${train_id}`
+        host: 'www.trenord.it',
+        path: `/rest/render/train-details?trainId=${train_id}`
     };
 
     callback = function(response) {
@@ -66,9 +92,10 @@ router.get('/train-id/:trainID', function (req, res, next) {
         });
         response.on('end', function () {
             console.log(str)
-            str = JSON.parse(str)
+            //str = JSON.parse(str)
             console.log(str);
-            res.send( JSON.parse(`{"numeroTreno": "${str.numeroTreno}",
+            res.send(str)
+            /*res.send( JSON.parse(`{"numeroTreno": "${str.numeroTreno}",
             "codLocOrig": "${str.codLocOrig}",
             "descLocOrig": "${str.descLocOrig}",
             "dataPartenza": "${new Date(str.dataPartenza)}",
@@ -78,7 +105,7 @@ router.get('/train-id/:trainID', function (req, res, next) {
         });
     }
 
-    http.request(options, callback).end()
+    http.request(options, callback).end()*/
 });
 
 module.exports = router;
