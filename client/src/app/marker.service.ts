@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TrenitaliaProvaService } from "./trenitalia-prova.service";
+import { TrenitaliaProvaService } from "./trenitalia-apirest.service";
 import * as L from 'leaflet';
 import { Observable } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MarkerService {
-  /*trenitalia prova service
+  /*trenitalia apirest service
   metodo stazioni che prende i dati delle stazioni in base al nome che richiama il metodo
   */
 
@@ -34,8 +34,8 @@ export class MarkerService {
       let stazioni = dati;
       console.log(stazioni);
       for (const c of stazioni) {
-        const lon = c.coordinates[0];
-        const lat = c.coordinates[1];
+        const lon = c.lon;
+        const lat = c.lat;
         const marker = L.marker([lat, lon]);
 
         marker.addTo(map);
@@ -49,8 +49,8 @@ export class MarkerService {
       console.log(stazioni);
       if(stazioni != undefined){
         for (const c of stazioni) {
-          const lon = c.coordinates[0];
-          const lat = c.coordinates[1];
+          const lon = c.lon;
+          const lat = c.lat;
           const marker = L.marker([lat, lon]);
 
           marker.removeFrom(map);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TrenitaliaProvaService } from "../trenitalia-prova.service";
+import { TrenitaliaProvaService } from "../trenitalia-apirest.service";
 
 @Component({
   selector: 'app-search-train',

@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TrenitaliaProvaService } from "../trenitalia-prova.service";
+import { TrenitaliaProvaService } from "../trenitalia-apirest.service";
 import { MarkerService } from '../marker.service';
 import * as L from 'leaflet';
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
