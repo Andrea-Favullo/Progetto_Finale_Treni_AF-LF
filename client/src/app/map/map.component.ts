@@ -73,7 +73,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   richiestaPosizioneStazione(nomestazione: HTMLInputElement): void {
-    //this.markerService.clearStationMarkers();
+    this.markerService.clearStationMarkers(this.map);
     this.obs = this.trenitalia.ricercaNomeStazione(nomestazione.value);
     this.obs.subscribe((data) => {
       this.dati = data;

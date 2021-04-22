@@ -17,6 +17,9 @@ export class MarkerService {
   obs: Observable<Object> | undefined;
   dati: any;
 
+  historymap : any;
+  historydati : any;
+
   constructor(private http: HttpClient, public trenitalia: TrenitaliaProvaService) { }
 
   trenitaliastazioniget(nomestazione: HTMLInputElement){
@@ -36,19 +39,25 @@ export class MarkerService {
         const marker = L.marker([lat, lon]);
 
         marker.addTo(map);
-        //marker.removeFrom(map);
       }
+      this.historydati = dati
+      this.historymap = map
   }
 
-  clearStationMarkers(map: any, dati : any): void {
-    /*let stazioni = dati;
+  clearStationMarkers(map: any): void {
+      let stazioni = this.historydati;
       console.log(stazioni);
-      for (const c of stazioni) {
-        const lon = c.coordinates[0];
-        const lat = c.coordinates[1];
-        const marker = L.marker([lat, lon]);
+      if(stazioni != undefined){
+        for (const c of stazioni) {
+          const lon = c.coordinates[0];
+          const lat = c.coordinates[1];
+          const marker = L.marker([lat, lon]);
 
-        marker.removeFrom(map);
-      }*/
+          marker.removeFrom(map);
+          marker.remove();
+        }
+
+      }
+
   }
 }
