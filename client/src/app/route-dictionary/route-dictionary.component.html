@@ -1,3 +1,34 @@
 <div class="main">
   <h1>Dizionario Percorsi</h1>
+  <p>
+    Percorso:
+    <input type="text" #nomestazione value="" class="form-control w-25">
+  </p>
+  <p>
+    <button class="btn btn-dark">Ricerca</button>
+  </p>
+
+  <p>
+    <button class="btn btn-dark">Indietro</button>
+    <p></p>
+    <button class="btn btn-dark">Avanti</button>
+  </p>
+
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Codice Treno</th>
+      <th scope="col">Stazione di Partenza</th>
+      <th scope="col">Stazione di Destinazione</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!--<tr *ngFor="let stazione of dati">
+      <th scope="row">{{stazione.id_staz}}</th>
+      <td>{{stazione.name}}</td>
+      <td>{{stazione.regione}}</td>
+    </tr>-->
+  </tbody>
+</table>
+<!--{{dati | json}} -->
 </div>
