@@ -12,13 +12,10 @@ export class MarkerService {
   metodo stazioni che prende i dati delle stazioni in base al nome che richiama il metodo
   */
 
-
+  markerList = new Array<L.Marker<any>>();
   stations: string = '/assets/stazioni_coord.geojson';
   obs: Observable<Object> | undefined;
   dati: any;
-
-  historymap : any;
-  historydati : any;
 
   constructor(private http: HttpClient, public trenitalia: TrenitaliaProvaService) { }
 
@@ -33,31 +30,25 @@ export class MarkerService {
   makeStationMarkers(map: any, dati : any): void {
       let stazioni = dati;
       console.log(stazioni);
+
+      for (const marker of this.markerList) {
+        marker.removeFrom(map);
+      }
+
       for (const c of stazioni) {
         const lon = c.lon;
         const lat = c.lat;
-        const marker = L.marker([lat, lon]);
-
+        let  marker = L.marker([lat, lon]);
+        this.markerList.push(marker);
         marker.addTo(map);
-      }
-      this.historydati = dati
-      this.historymap = map
-  }
 
-  clearStationMarkers(map: any): void {
-      let stazioni = this.historydati;
-      console.log(stazioni);
-      if(stazioni != undefined){
-        for (const c of stazioni) {
-          const lon = c.lon;
-          const lat = c.lat;
-          const marker = L.marker([lat, lon]);
+        //Pan and Zoom
+        map.panTo([lat, lon]);
+        map.setZoom(12);
 
-          marker.removeFrom(map);
-          marker.remove();
-        }
-
+        //map.setViewOffset(e.target.getLatLng(),[0,100],9);
       }
 
+      //map.panTo([lon, lat]);
   }
 }

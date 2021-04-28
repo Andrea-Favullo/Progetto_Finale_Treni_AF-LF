@@ -51,8 +51,8 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   private initMap(): void {
     this.map = L.map('map', {
-      center: [ 39.8282, -98.5795 ],
-      zoom: 3
+      center: [ 41.900636, 12.502026 ],
+      zoom: 6
     });
 
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -69,11 +69,10 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
-    //this.markerService.makeStationMarkers(this.map);
   }
 
   richiestaPosizioneStazione(nomestazione: HTMLInputElement): void {
-    this.markerService.clearStationMarkers(this.map);
+    this.dati = {};
     this.obs = this.trenitalia.ricercaNomeStazione(nomestazione.value);
     this.obs.subscribe((data) => {
       this.dati = data;
