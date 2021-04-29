@@ -32,7 +32,7 @@ router.get('/name/:stationName', function (req, res, next) {
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
         const collection = client.db("TreniDB").collection("dati_geospaziali");
-        collection.find({"name" : {"$regex" : `.*${station_name}.*`}}).toArray((err, result) => {
+        collection.find({"name" : {"$regex" : `.*${station_name}.*`, '$options' : 'i'}}).toArray((err, result) => {
             if (err) console.log(err.message);
             else { res.send(result); console.log(result); }
             client.close();
