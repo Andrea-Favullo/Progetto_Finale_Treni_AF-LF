@@ -5,3 +5,12 @@
   padding: 0px 10px;
   font-family: "Microsoft Tai Le";
 }
+
+.my-custom-scrollbar {
+position: relative;
+height: 600px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}

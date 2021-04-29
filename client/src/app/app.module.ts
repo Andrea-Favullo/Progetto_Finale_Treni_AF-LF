@@ -11,6 +11,7 @@ import { RouteDictionaryComponent } from './route-dictionary/route-dictionary.co
 import { AgmCoreModule } from '@agm/core';
 import { MapComponent } from './map/map.component';
 import { MarkerService } from './marker.service';
+import { PopupService } from './popup.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MarkerService } from './marker.service';
     AppRoutingModule
   ],
   providers: [
-    MarkerService
+    MarkerService,
+    PopupService
   ],
   bootstrap: [AppComponent]
 })

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { TrenitaliaProvaService } from "./trenitalia-apirest.service";
 import * as L from 'leaflet';
 import { Observable } from 'rxjs';
+import { PopupService } from './popup.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class MarkerService {
   obs: Observable<Object> | undefined;
   dati: any;
 
-  constructor(private http: HttpClient, public trenitalia: TrenitaliaProvaService) { }
+  constructor(private http: HttpClient, public trenitalia: TrenitaliaProvaService, private popupService: PopupService) { }
 
   trenitaliastazioniget(nomestazione: HTMLInputElement){
     this.obs = this.trenitalia.ricercaNomeStazione(nomestazione.value);
@@ -40,6 +41,7 @@ export class MarkerService {
         const lat = c.lat;
         let  marker = L.marker([lat, lon]);
         this.markerList.push(marker);
+        marker.bindPopup(this.popupService.makeStazionePopup(c));
         marker.addTo(map);
 
         //Pan and Zoom
@@ -48,7 +50,5 @@ export class MarkerService {
 
         //map.setViewOffset(e.target.getLatLng(),[0,100],9);
       }
-
-      //map.panTo([lon, lat]);
   }
 }

@@ -2,27 +2,36 @@
   <h1>Dizionario Percorsi</h1>
   <p>
     Percorso:
-    <input type="text" #nomestazione value="" class="form-control w-25">
+    <input type="text" #treno value="" class="form-control w-25">
   </p>
   <p>
-    <button class="btn btn-dark">Ricerca</button>
-  </p>
+    <button (click)="richiestaIdTreno(treno)" class="btn btn-dark">Ricerca</button>
 
+  </p>
+  <button (click)="listdietro()" class="btn btn-dark">Indietro</button> &nbsp; &nbsp;
+  <button (click)="listavanti()" class="btn btn-dark">Avanti</button> <br><br>
+  <p class="font-weight-bold">Da {{this.minnum}} a {{this.maxnum}}</p>
+
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
   <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">Codice Treno</th>
-      <th scope="col">Stazione di Partenza</th>
-      <th scope="col">Stazione di Destinazione</th>
+      <th scope="col" style="text-align: center;">Codice Treno</th>
+      <th scope="col" style="text-align: center;">Tipo di Treno</th>
+      <th scope="col" style="text-align: center;">Stazione di Partenza</th>
+      <th scope="col" style="text-align: center;">Stazione di Destinazione</th>
     </tr>
   </thead>
   <tbody>
-    <!--<tr *ngFor="let stazione of dati">
-      <th scope="row">{{stazione.id_staz}}</th>
-      <td>{{stazione.name}}</td>
-      <td>{{stazione.regione}}</td>
-    </tr>-->
+    <tr *ngFor="let treno of dati"> <!--Controlla se il treno esiste-->
+      <th scope="row" style="text-align: center;">{{treno.train_id}}</th>
+      <td style="text-align: center;"><img src="{{treno.img_url}}" alt="tipotreno" height=50 width=50></td>
+      <td style="text-align: center;">{{treno.departure_st}}</td>
+      <td style="text-align: center;">{{treno.arrival_st}}</td>
+    </tr>
   </tbody>
-</table>
-<!--{{dati | json}} -->
+  </table>
+</div>
+<!--{{dati | json}} {{dati.img_url}} <img alt="tipotreno" [src]="photoURL(dati.img_url)">-->
+<!--<img src=".\A.jpeg" alt="" border=3 height=100 width=300></img>-->
 </div>

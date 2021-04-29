@@ -11,16 +11,16 @@
   <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">id</th>
-      <th scope="col">Stazione</th>
-      <th scope="col">Regione</th>
+      <th scope="col" style="text-align: center;">id</th>
+      <th scope="col" style="text-align: center;">Stazione</th>
+      <th scope="col" style="text-align: center;">Regione</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let stazione of dati">
-      <th scope="row">{{stazione.id_staz}}</th>
-      <td>{{stazione.name}}</td>
-      <td>{{stazione.regione}}</td>
+      <th scope="row" style="text-align: center;">{{stazione.id_staz}}</th>
+      <td style="text-align: center;">{{stazione.name}}</td>
+      <td style="text-align: center;">{{stazione.regione}}</td>
     </tr>
   </tbody>
 </table>
