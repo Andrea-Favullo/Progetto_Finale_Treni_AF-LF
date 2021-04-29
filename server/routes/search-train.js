@@ -69,32 +69,21 @@ router.get('/train-id/:trainID', function (req, res, next) {
         console.error('Errore:', error);
         console.log('Codice di Stato:', response && response.statusCode);
 
-        var super_string = "";
-
-        body = JSON.stringify(JSON.parse(body)['message'])
-        //icon-train-prossimi
-
-        //const response = await got(train_url);
-        const dom = JSDOM.fragment(body);
-        //const dom = new JSDOM(body);
-console.log(dom)
-        var document = dom.window.document
-
-        console.log(document.querySelectorAll("specific-detail"))
-
+        body_from_JSON = JSON.parse(body)['message']
+        const frag = JSDOM.fragment(body_from_JSON);
         
-
-        Array.prototype.slice.call(dom.window.document.getElementsByTagName("p")).map(p => {
-            const par = p.textContent.replace(/\s+/g, '');
-            super_string += par;
-        })
-
-        
-        super_string = super_string.split("\\n");
-
-        //let stazione_partenza = 
-        let img_url = document.querySelector("img").src;
-        res.send( body );
+        var node_list = frag.querySelectorAll("p")
+        /*console.log(node_list);
+        for(let i=0; i<node_list.length; i++){
+            console.log("-------------------------------------")
+            console.log(node_list.item(i).textContent)
+        }*/
+        var stazione_partenza = node_list.item(2).textContent
+        var stazione_destinazione = node_list.item(4).textContent
+        var img_url = frag.querySelector("img").src
+        response = `{ \n\t\"train_id\":\"${train_id}\", \n\t\"departure_st\":\"${stazione_partenza}\", \n\t\"arrival_st\":\"${stazione_destinazione}\", \n\t\"img_url\":\"${img_url}\" \n}`
+        console.log("Cotnenuti elaborati:\n"+response)
+        res.send( JSON.parse(response) );
     });
 });
 
