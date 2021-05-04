@@ -11,10 +11,17 @@ export class AppComponent implements OnInit {
   title = 'client';
   obs: Observable<Object> | undefined;
   dati: any;
+  dati_informa: any;
 
   constructor(public trenitalia: TrenitaliaProvaService){}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.obs = this.trenitalia.recuperaAvvisi();
+    this.obs.subscribe((data) => {
+      this.dati_informa = data;
+      console.log(this.dati_informa)
+    });
+  }
 
 
   richiesta(): void {

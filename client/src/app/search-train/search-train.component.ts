@@ -42,10 +42,8 @@ export class SearchTrainComponent implements OnInit {
     let id_value = id.value;
     this.obs = this.trenitalia.ricercaIdTreno(id_value);
     this.obs.subscribe((data) => {
-      //RICORDARSI DI CAMBIARE QUANDO FINITO
-      //this.dati = data;
-      //console.log(this.dati)
-      console.log(data)
+      this.dati = data;
+      console.log(this.dati)
     });
   }
   toText(duration: string): string{

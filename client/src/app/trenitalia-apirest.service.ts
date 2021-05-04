@@ -37,4 +37,11 @@ export class TrenitaliaProvaService {
     return obs;
   }
 
+  recuperaAvvisi(){
+    const url = "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/news/0/it"
+    let obs = this.http.get(url);
+    console.log(obs);
+    return obs;
+  }
+
 }

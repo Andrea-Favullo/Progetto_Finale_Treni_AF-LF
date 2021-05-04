@@ -25,7 +25,7 @@ router.get('/', function (req, res, next) {
         const station_to = stations_to[0].name;
 
         const date = moment().format("DD/MM/YYYY");
-        const solutions = await t.getOneWaySolutions(station_from, station_to, date, "13", 1, 0, false, true);
+        const solutions = await t.getOneWaySolutions(station_from, station_to, date, "13", 1, 0);
         
         console.log(solutions)
         res.send(solutions);
@@ -124,12 +124,15 @@ router.get('/train-id/:trainID', function (req, res, next) {
         var stazione_partenza = node_list.item(2).textContent
         stazione_partenza = lowerCaseAllWordsExceptFirstLetters(stazione_partenza)
         stazione_partenza = upperCaseFirstLetter(stazione_partenza)
+
         //elaborazione stazione destinazione
         var stazione_destinazione = node_list.item(4).textContent
         stazione_destinazione = lowerCaseAllWordsExceptFirstLetters(stazione_destinazione)
         stazione_destinazione = upperCaseFirstLetter(stazione_destinazione)
+
         //recupero l'url dell'immagine del tipo del treno
         var img_url = frag.querySelector("img").src
+        
         //elaboro la risposta e la consegno
         response = `{ \n\t\"exists\":${stazione_partenza!=""},\n\t\"train_id\":\"${train_id}\", \n\t\"departure_st\":\"${stazione_partenza}\", \n\t\"arrival_st\":\"${stazione_destinazione}\", \n\t\"img_url\":\"${img_url}\" \n}`
         console.log("Contenuti elaborati:\n"+response)

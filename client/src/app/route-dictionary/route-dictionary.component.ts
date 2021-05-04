@@ -43,8 +43,6 @@ export class RouteDictionaryComponent implements OnInit {
     }
     this.log.push(this.collection);
     console.log(this.log);
-
-
   }
 
   listavanti() : void{
