@@ -11,7 +11,7 @@ export class SearchTrainComponent implements OnInit {
   title = 'client';
   obs: Observable<Object> | undefined;
   dati: any;
-
+  tiporichiesta: string = "NIENTE";
   loading: boolean = false;
 
   constructor(public trenitalia: TrenitaliaProvaService){}
@@ -38,32 +38,45 @@ export class SearchTrainComponent implements OnInit {
   }
 
   richiesta(): void {
+    this.tiporichiesta = "STANDBY";
     this.onRequestStarted();
     this.obs = this.trenitalia.ricercaEsempio();
     this.obs.subscribe((data) => {
       this.dati = data;
       console.log(this.dati)
+      this.tiporichiesta = "PARTENZA_DEST";
       this.onRequestFinished();
     });
   }
 
   richiestaPartenzaDestinazione(partenza: HTMLInputElement, destinazione: HTMLInputElement): void {
+    this.tiporichiesta = "STANDBY";
     this.onRequestStarted();
     this.obs = this.trenitalia.ricercaPartenzaArrivo(partenza.value, destinazione.value);
     this.obs.subscribe((data) => {
       this.dati = data;
-      console.log(this.dati)
+      console.log(this.dati);
+      this.tiporichiesta = "PARTENZA_DEST";
       this.onRequestFinished();
     });
   }
 
   richiestaIdTreno(id: HTMLInputElement): void {
+    this.tiporichiesta = "STANDBY";
+    this.dati = [];
     this.onRequestStarted();
     let id_value = id.value;
     this.obs = this.trenitalia.ricercaIdTreno(id_value);
-    this.obs.subscribe((data) => {
-      this.dati = data;
-      console.log(this.dati)
+    this.obs.subscribe((data : any) => {
+      if(data['exists']){
+        this.dati = data;
+        console.log(this.dati);
+        this.tiporichiesta = "ID_TRENO";
+      } else {
+        this.tiporichiesta = "NON_ESISTE";
+        this.dati = "non esiste"
+        console.log(this.dati);
+      }
       this.onRequestFinished();
     });
   }
