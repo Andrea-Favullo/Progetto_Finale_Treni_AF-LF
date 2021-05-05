@@ -4,6 +4,11 @@
     Percorso:
     <input type="text" #treno value="" class="form-control w-25">
   </p>
+  <!--gif di caricamento-->
+  <div *ngIf="isLoading()" style="background-color: beige; width:fit-content;">
+    <h3>Sta caricando ... <br> Attendere prego</h3>
+    <img width="500px" src="https://i.kym-cdn.com/photos/images/original/000/630/914/b51.gif">
+  </div>
   <p>
     <button (click)="richiestaIdTreno(treno)" class="btn btn-dark">Ricerca</button>
 

@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   dati: any;
   dati_informa: any;
 
+  loading: boolean = false;
+
   constructor(public trenitalia: TrenitaliaProvaService){}
 
   ngOnInit(): void {
@@ -30,6 +32,16 @@ export class AppComponent implements OnInit {
       this.dati = data;
       console.log(this.dati)
     });
+  }
+
+  nowLoading(b: boolean): void{
+    console.log("Now loading before: " + this.loading)
+    this.loading = b;
+    console.log("Now loading after: " + this.loading)
+  }
+
+  isLoading(): boolean{
+    return this.loading;
   }
 
 }

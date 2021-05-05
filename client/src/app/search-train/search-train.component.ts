@@ -12,9 +12,24 @@ export class SearchTrainComponent implements OnInit {
   obs: Observable<Object> | undefined;
   dati: any;
 
+  loading: boolean = false;
+
   constructor(public trenitalia: TrenitaliaProvaService){}
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  isLoading(): boolean{
+    return this.loading;
+  }
+
+  onRequestStarted(): void {
+    this.loading = true;
+    console.log(`sta caricando`);
+  }
+
+  onRequestFinished(): void {
+    this.loading = false;
+    console.log(`non sta caricando`);
   }
 
   ConvOrario(ms : any): any {
@@ -23,27 +38,33 @@ export class SearchTrainComponent implements OnInit {
   }
 
   richiesta(): void {
+    this.onRequestStarted();
     this.obs = this.trenitalia.ricercaEsempio();
     this.obs.subscribe((data) => {
       this.dati = data;
       console.log(this.dati)
+      this.onRequestFinished();
     });
   }
 
   richiestaPartenzaDestinazione(partenza: HTMLInputElement, destinazione: HTMLInputElement): void {
+    this.onRequestStarted();
     this.obs = this.trenitalia.ricercaPartenzaArrivo(partenza.value, destinazione.value);
     this.obs.subscribe((data) => {
       this.dati = data;
       console.log(this.dati)
+      this.onRequestFinished();
     });
   }
 
   richiestaIdTreno(id: HTMLInputElement): void {
+    this.onRequestStarted();
     let id_value = id.value;
     this.obs = this.trenitalia.ricercaIdTreno(id_value);
     this.obs.subscribe((data) => {
       this.dati = data;
       console.log(this.dati)
+      this.onRequestFinished();
     });
   }
   toText(duration: string): string{

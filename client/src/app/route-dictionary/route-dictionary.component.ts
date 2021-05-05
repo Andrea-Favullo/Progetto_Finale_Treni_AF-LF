@@ -18,6 +18,7 @@ export class RouteDictionaryComponent implements OnInit {
   exists_limit: number = 8;
   collection : any[] = [];
   log : any[][] = [[]];
+  loading: boolean = false;
 
   constructor(public trenitalia: TrenitaliaProvaService) { }
 
@@ -25,7 +26,22 @@ export class RouteDictionaryComponent implements OnInit {
     this.listainitIdTreno();
   }
 
+  isLoading(): boolean{
+    return this.loading;
+  }
+
+  onRequestStarted(): void {
+    this.loading = true;
+    console.log(`sta caricando`);
+  }
+
+  onRequestFinished(): void {
+    this.loading = false;
+    console.log(`non sta caricando`);
+  }
+
   listainitIdTreno() : void{
+    this.onRequestStarted();
     this.exists_limit = 31;
     this.exists_counter = 0;
     this.dati = [];
@@ -39,6 +55,7 @@ export class RouteDictionaryComponent implements OnInit {
             this.collection.push(data);
           }
         }
+        this.onRequestFinished();
       });
     }
     this.log.push(this.collection);
@@ -60,12 +77,14 @@ export class RouteDictionaryComponent implements OnInit {
   }
 
   richiestaIdTreno(idTreno: HTMLInputElement): void {
+    this.onRequestStarted();
     this.exists_limit = 1;
     this.dati = [];
     this.obs = this.trenitalia.ricercaIdTreno(idTreno.value);
     this.obs.subscribe((data) => {
       this.dati[0] = data;
       console.log(this.dati)
+      this.onRequestFinished();
     });
   }
 

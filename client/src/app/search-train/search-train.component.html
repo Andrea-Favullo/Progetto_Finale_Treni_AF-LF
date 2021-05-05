@@ -24,6 +24,12 @@
     <button (click)="richiestaIdTreno(numerotreno)" type="button" class="btn btn-dark">Ricerca</button>
   </p>
 
+  <!--gif di caricamento-->
+  <div *ngIf="isLoading()" style="background-color: beige; width:fit-content;">
+    <h3>Sta caricando ... <br> Attendere prego</h3>
+    <img width="500px" src="https://i.kym-cdn.com/photos/images/original/000/630/914/b51.gif">
+  </div>
+
   <div class="card-columns">
 		<div *ngFor="let treno of dati" class="card card w-55">
 	<!--		<div *ngIf="treno.poster; else elseBlock1"> <img class="card-img-top" alt="Movie Poster" [src]="photoURL(movie.poster)"> </div> -->
