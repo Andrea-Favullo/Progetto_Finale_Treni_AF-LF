@@ -93,10 +93,20 @@ router.get('/train-id/:trainID', function (req, res, next) {
 
         //recupero il body della pagina HTML e lo trasformo in un DOM
         body_from_JSON = JSON.parse(body)['message']
+        res.send(body_from_JSON)
         const frag = JSDOM.fragment(body_from_JSON);
         //recupero quindi tutti i paragrafi
         var node_list = frag.querySelectorAll("p")
 
+        var staz_inter = frag.querySelectorAll("li")
+        
+        console.log(staz_inter);
+        for(let i=0; i<staz_inter.length; i++){
+            console.log("-------------------------------------")
+            console.log("Posizione: "+i)
+            console.log(staz_inter.item(i).textContent)
+        }
+        
         /*console.log(node_list);
         for(let i=0; i<node_list.length; i++){
             console.log("-------------------------------------")
@@ -136,7 +146,7 @@ router.get('/train-id/:trainID', function (req, res, next) {
         //elaboro la risposta e la consegno
         response = `{ \n\t\"exists\":${stazione_partenza!=""},\n\t\"train_id\":\"${train_id}\", \n\t\"departure_st\":\"${stazione_partenza}\", \n\t\"arrival_st\":\"${stazione_destinazione}\", \n\t\"img_url\":\"${img_url}\" \n}`
         console.log("Contenuti elaborati:\n"+response)
-        res.send( JSON.parse(response) );
+        //res.send( JSON.parse(response) );
     });
 });
 

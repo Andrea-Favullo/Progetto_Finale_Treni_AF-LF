@@ -31,31 +31,40 @@
   </div>
 
   <div class="card-columns">
-		<div *ngFor="let treno of dati" class="card card w-55">
-	<!--		<div *ngIf="treno.poster; else elseBlock1"> <img class="card-img-top" alt="Movie Poster" [src]="photoURL(movie.poster)"> </div> -->
-  <!--         <ng-template #elseBlock1>
+    <div *ngFor="let treno of dati" class="card card w-55">
+      <!--		<div *ngIf="treno.poster; else elseBlock1"> <img class="card-img-top" alt="Movie Poster" [src]="photoURL(movie.poster)"> </div> -->
+      <!--         <ng-template #elseBlock1>
                 <span class="alert alert-info" role="alert"><strong>Info!</strong> Immagine mancante</span>
             </ng-template>-->
-            <div class="card-body text-center">
-                <h4 class="card-title">{{treno.origin}} <br /> {{treno.destination}}</h4>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                  <h5>Treni da utilizzare:</h5>
-                <p *ngFor="let numerotreno of treno.trainlist">
-                    {{numerotreno.traintype}} {{numerotreno.trainacronym}} {{numerotreno.trainidentifier}}
-                </p>
-              </li>
-              <li class="list-group-item"><h5>Partenza:</h5>{{this.ConvOrario(treno.departuretime)}}</li>
-              <li class="list-group-item"><h5>Durata del Viaggio:</h5>{{ this.toText(treno.duration) }}</li>
-              <li class="list-group-item"><h5>Arrivo:</h5>{{this.ConvOrario(treno.arrivaltime)}}</li>
-              <li class="list-group-item"><h5>Prezzo Calcolato:</h5>{{treno.originalPrice}} €</li>
-            </ul>
+      <div class="card-body text-center">
+        <h4 class="card-title">{{treno.origin}} <br /> {{treno.destination}}</h4>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h5>Treni da utilizzare:</h5>
+          <p *ngFor="let numerotreno of treno.trainlist">
+            {{numerotreno.traintype}} {{numerotreno.trainacronym}} {{numerotreno.trainidentifier}}
+          </p>
+        </li>
+        <li class="list-group-item">
+          <h5>Partenza:</h5>{{this.ConvOrario(treno.departuretime)}}
+        </li>
+        <li class="list-group-item">
+          <h5>Durata del Viaggio:</h5>{{ this.toText(treno.duration) }}
+        </li>
+        <li class="list-group-item">
+          <h5>Arrivo:</h5>{{this.ConvOrario(treno.arrivaltime)}}
+        </li>
+        <li class="list-group-item">
+          <!--originalPrice  minprice  -->
 
-        </div>
+          <span *ngIf="treno.originalPrice || treno.minprice"> <h5>Prezzo Calcolato:</h5>{{treno.originalPrice}} € </span>
+          <span *ngIf="!treno.originalPrice || !treno.minprice"> <h5>Prezzo non trovato!</h5></span>
+        </li>
+      </ul>
+
     </div>
+  </div>
 
 </div>
 <!--{{dati | json}} -->
-
-

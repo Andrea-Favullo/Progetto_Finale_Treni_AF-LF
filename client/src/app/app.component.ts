@@ -34,14 +34,4 @@ export class AppComponent implements OnInit {
     });
   }
 
-  nowLoading(b: boolean): void{
-    console.log("Now loading before: " + this.loading)
-    this.loading = b;
-    console.log("Now loading after: " + this.loading)
-  }
-
-  isLoading(): boolean{
-    return this.loading;
-  }
-
 }
