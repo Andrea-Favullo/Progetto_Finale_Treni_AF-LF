@@ -93,26 +93,47 @@ router.get('/train-id/:trainID', function (req, res, next) {
 
         //recupero il body della pagina HTML e lo trasformo in un DOM
         body_from_JSON = JSON.parse(body)['message']
-        res.send(body_from_JSON)
         const frag = JSDOM.fragment(body_from_JSON);
+
         //recupero quindi tutti i paragrafi
         var node_list = frag.querySelectorAll("p")
 
         var staz_inter = frag.querySelectorAll("li")
         
+        let stazioni_intermedie = []
+
         console.log(staz_inter);
         for(let i=0; i<staz_inter.length; i++){
-            console.log("-------------------------------------")
-            console.log("Posizione: "+i)
-            console.log(staz_inter.item(i).textContent)
+
+            let stazione = staz_inter.item(i).getElementsByTagName("p")
+            
+            //nome stazione
+            let nome_stazione = stazione.item(0).textContent
+            //arrivo alla stazione
+            let arrival_time = new String(new String(stazione.item(1).textContent).toString().replace("\n", "").trim()).split("\n")[1].trim().toString()
+            
+            let secondo_campo = ""
+            if (i==0){
+                secondo_campo="departure_time"
+            }else{
+                secondo_campo="arrival_time"
+            }
+            stazioni_intermedie.push( JSON.parse( `{ \"isFirst\":${i==0}, \"isLast\":${i==staz_inter.length-1}, \"station_name\":\"${nome_stazione}\", \"${secondo_campo}\":\"${arrival_time}\" }` ) )
+            
         }
-        
-        /*console.log(node_list);
-        for(let i=0; i<node_list.length; i++){
-            console.log("-------------------------------------")
-            console.log("Posizione: "+i)
-            console.log(node_list.item(i).textContent)
-        }*/
+
+        si=""
+
+        for(let i=0; i<stazioni_intermedie.length; i++){
+            let stazione = stazioni_intermedie[i]
+            console.log(stazione)
+            if (!stazione.isLast){
+                si += JSON.stringify(stazione) + ", "
+            }else{
+                si += JSON.stringify(stazione)
+            }
+        }
+        console.log(si)
 
         //metodi pulizia stringhe
         /**mette la prima lettera di una stringa in maiuscolo
@@ -144,9 +165,9 @@ router.get('/train-id/:trainID', function (req, res, next) {
         var img_url = frag.querySelector("img").src
         
         //elaboro la risposta e la consegno
-        response = `{ \n\t\"exists\":${stazione_partenza!=""},\n\t\"train_id\":\"${train_id}\", \n\t\"departure_st\":\"${stazione_partenza}\", \n\t\"arrival_st\":\"${stazione_destinazione}\", \n\t\"img_url\":\"${img_url}\" \n}`
+        response = `{ \n\t\"exists\":${stazione_partenza!=""},\n\t\"train_id\":\"${train_id}\", \n\t\"departure_st\":\"${stazione_partenza}\", \n\t\"arrival_st\":\"${stazione_destinazione}\", \n\t\"img_url\":\"${img_url}\", \"middle_stations\":[${si}] \n}`
         console.log("Contenuti elaborati:\n"+response)
-        //res.send( JSON.parse(response) );
+        res.send( JSON.parse(response) );
     });
 });
 
