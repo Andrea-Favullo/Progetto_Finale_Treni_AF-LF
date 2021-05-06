@@ -73,14 +73,31 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          <h5>Treno Numero: {{dati.train_id}}</h5>
+          <h5 class="font-weight-bold">Treno Numero: {{dati.train_id}}</h5>
         </li>
-        <li class="list-group-item">
+        <!--<li class="list-group-item">
           <h5>Partenza: {{dati.departure_st}}</h5>
-        </li>
+        </li>-->
         <li class="list-group-item">
-          <h5>Arrivo: {{dati.arrival_st}}</h5>
+          <h5>Ferma a:</h5>
+          <div *ngFor="let fermate of dati.middle_stations">
+            <span *ngIf="fermate.isFirst">
+              <h5 class="text-primary">{{this.capitalizeWords(fermate.station_name)}}</h5>
+              <h5 class="text-primary">Partenza: {{fermate.departure_time}}</h5>
+            </span>
+            <span *ngIf="!fermate.isFirst && !fermate.isLast">
+              <h6>{{this.capitalizeWords(fermate.station_name)}}</h6>
+              <h6>{{fermate.arrival_time}}</h6>
+            </span>
+            <span *ngIf="fermate.isLast">
+              <h5 class="text-danger">{{this.capitalizeWords(fermate.station_name)}}</h5>
+              <h5 class="text-danger">Arrivo: {{fermate.arrival_time}}</h5>
+            </span>
+          </div>
         </li>
+        <!--<li class="list-group-item">
+          <h5>Arrivo: {{dati.arrival_st}}</h5>
+        </li>-->
 
       </ul>
     </div>

@@ -37,6 +37,13 @@ export class SearchTrainComponent implements OnInit {
     return date;
   }
 
+  capitalizeWords(text: string): string{
+    text=text.toLowerCase();
+    return text.replace(/(?:^|\s)\S/g, (res)=>{
+      return res.toUpperCase();
+    })
+  };
+
   richiesta(): void {
     this.tiporichiesta = "STANDBY";
     this.onRequestStarted();

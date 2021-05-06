@@ -102,7 +102,6 @@ router.get('/train-id/:trainID', function (req, res, next) {
         
         let stazioni_intermedie = []
 
-        console.log(staz_inter);
         for(let i=0; i<staz_inter.length; i++){
 
             let stazione = staz_inter.item(i).getElementsByTagName("p")
@@ -118,7 +117,7 @@ router.get('/train-id/:trainID', function (req, res, next) {
             }else{
                 secondo_campo="arrival_time"
             }
-            stazioni_intermedie.push( JSON.parse( `{ \"isFirst\":${i==0}, \"isLast\":${i==staz_inter.length-1}, \"station_name\":\"${nome_stazione}\", \"${secondo_campo}\":\"${arrival_time}\" }` ) )
+            stazioni_intermedie.push( JSON.parse( `{ \"isFirst\":${i==0},\n\"isLast\":${i==staz_inter.length-1},\n\"station_name\":\"${nome_stazione}\",\n\"${secondo_campo}\":\"${arrival_time}\"\n}` ) )
             
         }
 
@@ -126,14 +125,12 @@ router.get('/train-id/:trainID', function (req, res, next) {
 
         for(let i=0; i<stazioni_intermedie.length; i++){
             let stazione = stazioni_intermedie[i]
-            console.log(stazione)
             if (!stazione.isLast){
-                si += JSON.stringify(stazione) + ", "
+                si += JSON.stringify(stazione) + ",\n"
             }else{
                 si += JSON.stringify(stazione)
             }
         }
-        console.log(si)
 
         //metodi pulizia stringhe
         /**mette la prima lettera di una stringa in maiuscolo
@@ -168,6 +165,34 @@ router.get('/train-id/:trainID', function (req, res, next) {
         response = `{ \n\t\"exists\":${stazione_partenza!=""},\n\t\"train_id\":\"${train_id}\", \n\t\"departure_st\":\"${stazione_partenza}\", \n\t\"arrival_st\":\"${stazione_destinazione}\", \n\t\"img_url\":\"${img_url}\", \"middle_stations\":[${si}] \n}`
         console.log("Contenuti elaborati:\n"+response)
         res.send( JSON.parse(response) );
+    });
+});
+
+
+//restituisce avviso
+router.get('/avvisi', function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    const info_url = `https://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/news/0/it`;
+    console.log("URL web scraping: \"" + info_url + "\"")
+
+    request(info_url, function (error, response, body) {
+        //print di stato della connessione
+        console.error('Errore:', error);
+        console.log('Codice di Stato:', response && response.statusCode);
+
+
+
+        let testo = new String(JSON.parse(body)[0].testo).toString();
+        
+        console.log(new String(testo).replace("\r",""))
+        
+        //console.log(new String(testo).replace("\n","").toString())
+        let result = `{ \"message\": \"${new String(testo).replace("\n","").toString()}\" }`
+        console.log("1) -----------------------------")
+        console.log(result)
+        console.log("2) -----------------------------")
+        res.send( JSON.parse(result) );
     });
 });
 

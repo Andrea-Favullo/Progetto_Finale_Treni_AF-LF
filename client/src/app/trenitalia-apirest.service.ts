@@ -38,7 +38,7 @@ export class TrenitaliaProvaService {
   }
 
   recuperaAvvisi(){
-    const url = "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/news/0/it"
+    const url = `${this.serverURL}search-train/avvisi`
     let obs = this.http.get(url);
     console.log(obs);
     return obs;
