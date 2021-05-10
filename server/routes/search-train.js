@@ -189,9 +189,7 @@ router.get('/avvisi', function (req, res, next) {
         
         //console.log(new String(testo).replace("\n","").toString())
         let result = `{ \"message\": \"${new String(testo).replace("\n","").toString()}\" }`
-        console.log("1) -----------------------------")
-        console.log(result)
-        console.log("2) -----------------------------")
+        result = new String(result).replace("\r","").toString();
         res.send( JSON.parse(result) );
     });
 });
