@@ -56,7 +56,6 @@
           <h5>Arrivo:</h5>{{this.ConvOrario(treno.arrivaltime)}}
         </li>
         <li class="list-group-item">
-          <!--originalPrice  minprice  -->
 
           <span *ngIf="treno.originalPrice || treno.minprice"> <h5>Prezzo Calcolato:</h5>{{treno.originalPrice}} € </span>
           <span *ngIf="!treno.originalPrice || !treno.minprice"> <h5>Prezzo non trovato!</h5></span>

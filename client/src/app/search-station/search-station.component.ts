@@ -15,8 +15,7 @@ export class SearchStationComponent implements OnInit {
 
   constructor(public trenitalia: TrenitaliaProvaService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   isLoading(): boolean{
     return this.loading;
