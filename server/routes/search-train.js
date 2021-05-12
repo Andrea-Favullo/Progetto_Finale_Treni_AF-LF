@@ -181,8 +181,6 @@ router.get('/avvisi', function (req, res, next) {
         console.error('Errore:', error);
         console.log('Codice di Stato:', response && response.statusCode);
 
-
-
         let testo = new String(JSON.parse(body)[0].testo).toString();
         
         console.log(new String(testo).replace("\r",""))
