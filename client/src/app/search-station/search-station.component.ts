@@ -37,8 +37,8 @@ export class SearchStationComponent implements OnInit {
     this.obs.subscribe((data) => {
       this.dati = data;
       console.log(this.dati)
+      this.onRequestFinished();
     });
-    this.onRequestFinished();
   }
 
 }

@@ -5,8 +5,8 @@
     <input type="text" #treno value="" class="form-control w-25">
   </p>
   <!--gif di caricamento-->
-  <div *ngIf="isLoading()" style="background-color: beige; width:fit-content;">
-    <h3>Sta caricando ... <br> Attendere prego</h3>
+  <div *ngIf="isLoading()" style="background-color: white; width:fit-content;">
+    <h3>Caricamento in corso ... <br> Attendere prego</h3>
     <img width="500px" src="https://i.kym-cdn.com/photos/images/original/000/630/914/b51.gif">
   </div>
   <p>
@@ -28,7 +28,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let treno of dati"> <!--Controlla se il treno esiste-->
+    <tr *ngFor="let treno of dati">
       <th scope="row" style="text-align: center;">{{treno.train_id}}</th>
       <td style="text-align: center;"><img src="{{treno.img_url}}" alt="tipotreno" height=50 width=50></td>
       <td style="text-align: center;">{{treno.departure_st}}</td>
