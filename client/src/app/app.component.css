@@ -43,6 +43,18 @@
   font-family: "Microsoft Tai Le";
 }
 
+#credits {
+  position: absolute;
+  display: inline-block;
+  bottom: 0;
+  font-family: "Microsoft Tai Le";
+  left: 15px;
+}
+
+#credits-image{
+  padding:0px 20px;
+}
+
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
