@@ -12,8 +12,6 @@ cd client/ ;
     echo -e "\n-----------------------------\n\nInstallazione Dipendenze ..." ;
     npm i ;
 cd ../server ;
-    echo -e "\n-----------------------------\n\nInstallazione GOT ..." ;
-    npm i got@11.0.2 ;
     echo -e "\n-----------------------------\n\nInstallazione JSDOM ..." ;
     npm i jsdom@16.4.0 ;
     echo -e "\n-----------------------------\n\nInstallazione CORS ..." ;
