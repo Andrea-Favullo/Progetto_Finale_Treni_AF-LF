@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TrenitaliaProvaService } from "../trenitalia-apirest.service";
+import { SearchStationListService } from '../search-station-list.service';
 
 @Component({
   selector: 'app-search-station',
@@ -10,12 +11,14 @@ import { TrenitaliaProvaService } from "../trenitalia-apirest.service";
 export class SearchStationComponent implements OnInit {
   title = 'client';
   obs: Observable<Object> | undefined;
-  dati: any;
   loading: boolean = false;
+  dati : any;
+  constructor(public trenitalia: TrenitaliaProvaService,
+              private searchStationList : SearchStationListService) { }
 
-  constructor(public trenitalia: TrenitaliaProvaService) { }
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+     this.dati =  this.searchStationList.getStationList();
+  }
 
   isLoading(): boolean{
     return this.loading;
@@ -35,8 +38,9 @@ export class SearchStationComponent implements OnInit {
     this.onRequestStarted();
     this.obs = this.trenitalia.ricercaNomeStazione(nomestazione.value);
     this.obs.subscribe((data) => {
-      this.dati = data;
-      console.log(this.dati)
+      this.searchStationList.setStationList(data);
+      console.log( this.searchStationList.getStationList())
+      this.dati =  this.searchStationList.getStationList();
       this.onRequestFinished();
     });
   }

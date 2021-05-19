@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { TrenitaliaProvaService } from "../trenitalia-apirest.service";
 import { MarkerService } from '../marker.service';
 import * as L from 'leaflet';
+import { SearchStationListService } from '../search-station-list.service';
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = '/assets/station.png'; //assets/marker-icon.png
 const shadowUrl = 'assets/marker-shadow.png';
@@ -26,7 +27,7 @@ L.Marker.prototype.options.icon = iconDefault;
 export class MapComponent implements OnInit, AfterViewInit {
   title = 'map';
   obs: Observable<Object> | undefined;
-  dati: any;
+
 
   //Aggiungiamo latitudine e longitudine di un luogo
   lat: number = 45.462341; //TEST
@@ -44,7 +45,8 @@ export class MapComponent implements OnInit, AfterViewInit {
 */
   constructor(
     public trenitalia: TrenitaliaProvaService,
-    private markerService: MarkerService
+    private markerService: MarkerService,
+    private searchStationList : SearchStationListService
   ) { }
 
   private map: any;
@@ -65,19 +67,25 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+
   }
 
   ngAfterViewInit(): void {
     this.initMap();
+    console.log(this.searchStationList.getStationList());
+    if (this.searchStationList.getStationList() != null && this.searchStationList.getStationList()!= undefined && this.searchStationList.getStationList() != {})
+    {
+     this.markerService.makeStationMarkers(this.map, this.searchStationList.getStationList());
+    }
   }
 
   richiestaPosizioneStazione(nomestazione: HTMLInputElement): void {
-    this.dati = {};
+    this.searchStationList.setStationList ({});
     this.obs = this.trenitalia.ricercaNomeStazione(nomestazione.value);
     this.obs.subscribe((data) => {
-      this.dati = data;
-      this.markerService.makeStationMarkers(this.map, this.dati);
-      console.log(this.dati)
+      this.searchStationList.setStationList (data);
+      this.markerService.makeStationMarkers(this.map, this.searchStationList.getStationList());
+      console.log(this.searchStationList.getStationList())
     });
   }
 

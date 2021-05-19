@@ -1,16 +1,14 @@
-<router-outlet>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light main">
+<nav class="navbar navbar-expand-lg navbar-light bg-light main">
       <p>{{dati_informa.message}}</p>
     </nav>
     <!-- Sidebar -->
     <div class="sidenav">
       <div class="sidenav-heading">No Train, <br> No Rail </div>
-      <a href="/home">Pagina Principale</a>
-      <a href="/searchtrain">Ricerca</a>
-      <a href="/map">Mappa</a>
-      <a href="/searchstation">Lista Stazioni</a>
-      <a href="/routedictionary">Dizionario Percorsi</a>
+      <a routerLink="/home">Pagina Principale</a>
+      <a routerLink="/searchtrain">Ricerca</a>
+      <a routerLink="/map">Mappa</a>
+      <a routerLink="/searchstation">Lista Stazioni</a>
+      <a routerLink="/routedictionary">Dizionario Percorsi</a>
 
 
 
@@ -21,7 +19,14 @@
       <a class="text-center">Creato da <br> Luca Ferrari e <br> Andrea Favullo</a>
       </div>
     </div>
+<router-outlet>
+
+
+</router-outlet>
+
+
+
 <!--https://cdn.dribbble.com/users/611291/screenshots/1959754/train.gif nuova gif da sostituire-->
 <!-- https://cdn.pixabay.com/photo/2019/12/18/05/43/rail-logo-4703155_1280.jpg immagine logo crediti -->
-</router-outlet>
+
 
