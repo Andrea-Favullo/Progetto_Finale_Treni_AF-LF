@@ -46,14 +46,24 @@
 #credits {
   position: absolute;
   display: inline-block;
+  text-align: center;
+  text-justify: inter-word;
+  margin: auto;
+  display:table-cell;
   bottom: 0;
-  font-family: "Microsoft Tai Le";
-  left: 15px;
+  padding-left: 0%;
 }
 
 #credits-image{
-  padding:0px 20px;
-}
+
+  padding: 0% 24%;
+}/*
+.TEST{
+  text-align: center;
+  text-justify: inter-word;
+  margin: auto;
+  display:table-cell;
+}*/
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {

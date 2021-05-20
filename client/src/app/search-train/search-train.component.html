@@ -1,15 +1,15 @@
 <div class="main">
-  <h1>Ricerca</h1>
+  <h1>Ricerca Treni</h1>
   <p>
 
-    <input type="button" value="Provami!" (click)="richiesta()" class="btn btn-danger">
+    <input type="button" value="BOTTONE DI TEST DA CANCELLARE POI" (click)="richiesta()" class="btn btn-danger">
   </p>
   <p>
-    Partenza:
+    Inserisci <i>Stazione di Partenza</i> :
     <input type="text" #partenza value="" class="form-control w-25">
   </p>
   <p>
-    Destinazione:
+    Inserisci <i>Stazione di Destinazione</i> :
     <input type="text" #destinazione value="" class="form-control w-25">
   </p>
   <p>
@@ -17,7 +17,7 @@
   </p>
   <h3>Oppure:</h3>
   <p>
-    Numero Treno:
+    Inserisci il <i>Numero del Treno</i> :
     <input type="text" #numerotreno value="" class="form-control w-25">
   </p>
   <p>
@@ -25,7 +25,7 @@
   </p>
 
   <!--gif di caricamento-->
-  <div *ngIf="isLoading()" style="background-color: white; width:fit-content;">
+  <div id="loadingImage" *ngIf="isLoading()" style="background-color: white; width:fit-content;">
     <h3>Caricamento in corso ... <br> Attendere prego</h3>
     <img width="500px" src="https://i.kym-cdn.com/photos/images/original/000/630/914/b51.gif">
   </div>

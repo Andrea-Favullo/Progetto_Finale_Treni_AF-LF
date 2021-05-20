@@ -1,35 +1,38 @@
 <div class="main">
-  <h1>Lista Stazioni</h1>
+  <h1>Ricerca  Stazioni</h1>
+  <br>
   <p>
-    Stazione:
+    Inserisci il <i>Nome della Stazione</i> :
     <input type="text" #nomestazione value="" class="form-control w-25">
-  </p>
-  <p>
-    <button (click)="richiestaNomeStazione(nomestazione)" class="btn btn-dark">Ricerca</button>
+    <button (click)="richiestaNomeStazione(nomestazione)" class="btn">
+      <img width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png">
+    </button>
   </p>
 
+
+  <br>
   <!--gif di caricamento-->
-  <div *ngIf="isLoading()" style="background-color: white; width:fit-content;">
+  <div id="loadingImage" *ngIf="isLoading()" style="background-color: white; width:fit-content;">
     <h3>Caricamento in corso ... <br> Attendere prego</h3>
     <img width="500px" src="https://i.kym-cdn.com/photos/images/original/000/630/914/b51.gif">
   </div>
-
-  <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col" style="text-align: center;">id</th>
-      <th scope="col" style="text-align: center;">Stazione</th>
-      <th scope="col" style="text-align: center;">Regione</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let stazione of dati">
-      <th scope="row" style="text-align: center;">{{stazione.id_staz}}</th>
-      <td style="text-align: center;">{{stazione.name}}</td>
-      <td style="text-align: center;">{{stazione.regione}}</td>
-    </tr>
-  </tbody>
-</table>
-<!--{{dati | json}} -->
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" style="text-align: center;">id</th>
+          <th scope="col" style="text-align: center;">Stazione</th>
+          <th scope="col" style="text-align: center;">Regione</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stazione of dati">
+          <th scope="row" style="text-align: center;">{{stazione.id_staz}}</th>
+          <td style="text-align: center;">{{stazione.name}}</td>
+          <td style="text-align: center;">{{stazione.regione}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!--{{dati | json}} -->
 </div>
-

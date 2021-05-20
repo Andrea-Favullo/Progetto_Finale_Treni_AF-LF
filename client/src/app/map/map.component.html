@@ -1,27 +1,16 @@
 <div class="main">
   <h1>Mappa</h1>
   <p>
-    Stazione:
+    Inserisci il <i>Nome della Stazione</i> :
     <input type="text" #nomestazione value="" class="form-control w-25">
   </p>
   <p>
     <button (click)="richiestaPosizioneStazione(nomestazione)" class="btn btn-dark">Ricerca</button>
   </p>
-  <!--Leaflet-->
+  <!--Mappa di Leaflet-->
   <div class="map-container">
-  <div class="map-frame">
-    <div id="map"></div>
-  </div>
-  </div>
-
-  <!-- GOOGLE MAPS
-  <agm-map [latitude]="lat" [longitude]="lng">
-
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-
-    <div *ngFor="let stazione of dati">
-      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    <div class="map-frame">
+      <div id="map"></div>
     </div>
-    {{stazione.coordinates[0]}}
-</agm-map> -->
+  </div>
 </div>

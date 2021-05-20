@@ -20,6 +20,18 @@ router.get('/', function (req, res, next) {
         });
     });
 });
+router.get('/name', function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    client.connect(err => {
+        const collection = client.db("TreniDB").collection("dati_geospaziali");
+        collection.find({}).toArray((err, result) => {
+            if (err) console.log(err.message);
+            else { res.send(result); console.log(result); }
+            client.close();
+        });
+    });
+});
 
 //ricerca delle stazioni in base al nome
 router.get('/name/:stationName', function (req, res, next) {
