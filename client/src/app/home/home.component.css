@@ -11,13 +11,32 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
 }
-
 /* On mouse-over, add a deeper shadow */
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .bg-custom-1 {
-    background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
+.articoli{
+  width: 100%;
+  min-height: 200px;
+}
+
+#searchTrain{
+  background-image: url("https://i.ibb.co/y66CBzx/search-train.jpg");
+}
+
+#searchStation{
+  background-image: url("https://i.ibb.co/0MngQBm/search-station.jpg");
+}
+
+#mappa{
+  background-image: url("https://i.ibb.co/Z6vQMgv/map.png");
+}
+
+#routeDict{
+  background-image: url("https://i.ibb.co/w4d828w/route-dict.jpg");
+}
