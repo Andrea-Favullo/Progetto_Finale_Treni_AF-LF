@@ -6,17 +6,18 @@
   font-family: "Microsoft Tai Le";
 }
 
+#loadingImage{
+  position: absolute;
+  top:100px;
+  left: 800px;
+}
+
 .my-custom-scrollbar {
 position: relative;
 height: 450px;
 overflow: auto;
 }
+
 .table-wrapper-scroll-y {
 display: block;
-}
-
-#loadingImage{
-  position: absolute;
-  top:100px;
-  left: 650px;
 }

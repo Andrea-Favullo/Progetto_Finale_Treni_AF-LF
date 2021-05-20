@@ -1,28 +1,31 @@
 <div class="main">
   <h1>Ricerca Treni</h1>
-  <p>
 
-    <input type="button" value="BOTTONE DI TEST DA CANCELLARE POI" (click)="richiesta()" class="btn btn-danger">
-  </p>
   <p>
-    Inserisci <i>Stazione di Partenza</i> :
+    Inserisci <i>Stazione di Partenza</i> : <br>
     <input type="text" #partenza value="" class="form-control w-25">
+    Inserisci <i>Stazione di Destinazione</i> : <br>
+    <input type="text" #destinazione value="" class="form-control w-25" style="display: inline-block;">
+    <button (click)="richiestaPartenzaDestinazione(partenza, destinazione)" class="btn">
+      <img width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png"
+        style="width:50px; height:50px; display: inline-block;">
+    </button>
   </p>
-  <p>
-    Inserisci <i>Stazione di Destinazione</i> :
-    <input type="text" #destinazione value="" class="form-control w-25">
-  </p>
-  <p>
-    <button (click)="richiestaPartenzaDestinazione(partenza, destinazione)" type="button" class="btn btn-dark">Ricerca</button>
-  </p>
+
+
+
   <h3>Oppure:</h3>
+
+
   <p>
-    Inserisci il <i>Numero del Treno</i> :
-    <input type="text" #numerotreno value="" class="form-control w-25">
+    Inserisci il <i>Numero del Treno</i> : <br>
+    <input type="text" #numerotreno value="" class="form-control w-25" style="display: inline-block;">
+    <button (click)="richiestaIdTreno(numerotreno)" class="btn">
+      <img width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png"
+        style="width:50px; height:50px; display: inline-block;">
+    </button>
   </p>
-  <p>
-    <button (click)="richiestaIdTreno(numerotreno)" type="button" class="btn btn-dark">Ricerca</button>
-  </p>
+
 
   <!--gif di caricamento-->
   <div id="loadingImage" *ngIf="isLoading()" style="background-color: white; width:fit-content;">

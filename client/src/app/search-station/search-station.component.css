@@ -9,13 +9,15 @@
 #loadingImage{
   position: absolute;
   top:40px;
-  left: 650px;
+  left: 750px;
 }
+
 .my-custom-scrollbar {
-position: relative;
-height: 600px;
-overflow: auto;
+  position: relative;
+  height: 650px;
+  overflow: auto;
 }
+
 .table-wrapper-scroll-y {
-display: block;
+  display: block;
 }

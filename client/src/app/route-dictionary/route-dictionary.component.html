@@ -1,18 +1,22 @@
 <div class="main">
+
   <h1>Dizionario Percorsi</h1>
-  <p>
-    Inserisci il <i>Codice del Treno</i> :
-    <input type="text" #treno value="" class="form-control w-25">
-  </p>
+
   <!--gif di caricamento-->
   <div id="loadingImage" *ngIf="isLoading()" style="background-color: white; width:fit-content;">
     <h3>Caricamento in corso ... <br> Attendere prego</h3>
     <img width="500px" src="https://i.kym-cdn.com/photos/images/original/000/630/914/b51.gif">
   </div>
-  <p>
-    <button (click)="richiestaIdTreno(treno)" class="btn btn-dark">Ricerca</button>
 
+  <p>
+    Inserisci il <i>Codice del Treno</i> : <br>
+    <input type="text" #treno value="" class="form-control w-25" style="display: inline-block;">
+    <button (click)="richiestaIdTreno(treno)" class="btn" style="display: inline-block;">
+      <img width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png"
+        style="width:50px; height:50px; display: inline-block;">
+    </button>
   </p>
+
   <button (click)="listdietro()" class="btn"><img width="125px" src="https://i.ibb.co/VqV9Kj0/left-arrow.png"></button>
   &nbsp; &nbsp;
   <button (click)="listavanti()" class="btn"><img width="125px" src="https://i.ibb.co/zPf89TG/right-arrow.png"></button>

@@ -1,21 +1,23 @@
 <div class="main">
-  <h1>Ricerca  Stazioni</h1>
+  <h1>Ricerca Stazioni</h1>
   <br>
   <p>
-    Inserisci il <i>Nome della Stazione</i> :
-    <input type="text" #nomestazione value="" class="form-control w-25">
+    Inserisci il <i>Nome della Stazione</i> :<br>
+    <input type="text" #nomestazione value="" class="form-control w-25" style="display: inline-block;">
     <button (click)="richiestaNomeStazione(nomestazione)" class="btn">
-      <img width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png">
+      <img width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png"
+        style="width:50px; height:50px; display: inline-block;">
     </button>
   </p>
 
-
-  <br>
   <!--gif di caricamento-->
   <div id="loadingImage" *ngIf="isLoading()" style="background-color: white; width:fit-content;">
     <h3>Caricamento in corso ... <br> Attendere prego</h3>
-    <img width="500px" src="https://i.kym-cdn.com/photos/images/original/000/630/914/b51.gif">
+    <img width="350px" src="https://i.kym-cdn.com/photos/images/original/000/630/914/b51.gif">
   </div>
+
+  <br><br><br>
+
   <div class="table-wrapper-scroll-y my-custom-scrollbar">
     <table class="table table-striped">
       <thead>
