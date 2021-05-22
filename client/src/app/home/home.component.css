@@ -2,7 +2,7 @@
 
 .main {
   margin-left: 180px; /* Same as the width of the sidebar */
-  padding: 0px 10px;
+  padding: 0px 25px;
   font-family: "Microsoft Tai Le";
 }
 
@@ -14,7 +14,7 @@
 /* On mouse-over, add a deeper shadow */
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  box-shadow: 0 25px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
 .bg-custom-1 {
@@ -28,16 +28,33 @@
 
 #searchTrain{
   background-image: url("https://i.ibb.co/y66CBzx/search-train.jpg");
+  position: relative;
+}
+#searchTrain #desc{
+  position: absolute;
+  bottom: 25px;
 }
 
 #searchStation{
   background-image: url("https://i.ibb.co/0MngQBm/search-station.jpg");
 }
+#searchStation #desc{
+  position: absolute;
+  bottom: 25px;
+}
 
 #mappa{
   background-image: url("https://i.ibb.co/Z6vQMgv/map.png");
 }
+#mappa #desc{
+  position: absolute;
+  bottom: 25px;
+}
 
 #routeDict{
   background-image: url("https://i.ibb.co/w4d828w/route-dict.jpg");
+}
+#routeDict #desc{
+  position: absolute;
+  bottom: 25px;
 }

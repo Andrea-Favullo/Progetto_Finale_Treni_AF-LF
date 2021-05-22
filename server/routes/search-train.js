@@ -38,15 +38,11 @@ router.get('/from-to/:DepartureStation/:ArrivalStation', function (req, res, nex
     res.setHeader('Access-Control-Allow-Origin', '*');
 
     //metodi pulizia stringhe
-    /**mette la prima lettera di una stringa in maiuscolo
-     * @param {* string stringa da elaborare} string 
-     */
+    //mette la prima lettera di una stringa in maiuscolo
     function upperCaseFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
-    /**tutte le lettere di una stringa vengono trasformate in minuscolo
-     * @param {* string stringa da elaborare} string 
-     */
+    //tutte le lettere di una stringa vengono trasformate in minuscolo
     function lowerCaseAllWordsExceptFirstLetters(string) {
         return string.replace(/\S*/g, function (word) {
             return word.charAt(0) + word.slice(1).toLowerCase();
