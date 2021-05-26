@@ -25,36 +25,83 @@
   width: 100%;
   min-height: 200px;
 }
-
+/* COMPONENTE RICERCA TRENI */
 #searchTrain{
   background-image: url("https://i.ibb.co/y66CBzx/search-train.jpg");
+  color:black;
+  height:350px;
   position: relative;
 }
 #searchTrain #desc{
   position: absolute;
   bottom: 25px;
 }
+#searchTrain #intestazione{
+  color:white;
+  font-size: 50px;
+}
+#searchTrain #testo{
+  color:white;
+  font-size: 30px;
+}
 
+/* COMPONENTE RICERCA STAZIONI */
 #searchStation{
   background-image: url("https://i.ibb.co/0MngQBm/search-station.jpg");
+  color:black;
+  height:350px;
+}
+#searchStation #intestazione{
+  font-size: 50px;
+}
+#searchStation #testo{
+  font-size: 30px;
 }
 #searchStation #desc{
   position: absolute;
   bottom: 25px;
 }
 
+/* COMPONENTE MAPPA */
 #mappa{
   background-image: url("https://i.ibb.co/Z6vQMgv/map.png");
+  color:black;
+  height:350px;
 }
 #mappa #desc{
   position: absolute;
   bottom: 25px;
 }
+#mappa #intestazione{
+  color:black;
+  font-size: 50px;
+}
+#mappa #testo{
+  color:black;
+  font-size: 30px;
+}
 
+/* COMPONENTE DIZIONARIO PERCORSI */
 #routeDict{
   background-image: url("https://i.ibb.co/w4d828w/route-dict.jpg");
+  color:black;
+  height:350px;
 }
 #routeDict #desc{
   position: absolute;
   bottom: 25px;
+}
+#routeDict #intestazione{
+  font-size: 50px;
+}
+#routeDict #testo{
+  font-size: 30px;
+}
+
+.card-deck{
+  padding:5% 5% 5% 5%;
+}
+
+a{
+  text-decoration: none;
 }

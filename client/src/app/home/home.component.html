@@ -1,27 +1,19 @@
 <div class="main">
   <h1>Benvenuti nella <i>Home Page</i> !</h1>
-  <!--
-  <div class="bg-image hover-overlay ripple shadow-1-strong rounded" data-mdb-ripple-color="light">
-    <img src="https://mdbootstrap.com/img/new/fluid/city/113.jpg" class="w-100" />
-    <a href="#!">
-      <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
-    </a>
-  </div>
--->
 
-  <!--Da implementare più tardi-->
-  <div class="card-deck" style="padding:5% 5% 5% 5%;">
+  <div class="card-deck">
 
     <div class="col">
 
-      <a href="/searchtrain" style="text-decoration: none;">
-        <div id="searchTrain" class="card text-white bg-info articoli" style="height:350px;">
-          <div class="card-header"><span style="color:white; font-size: 50px;">Servono Indicazioni?</span></div>
+      <!--COMPONENTE RICERCA TRENI-->
+      <a routerLink="/searchtrain">
+        <div id="searchTrain" class="card text-white bg-info articoli">
+          <div class="card-header"><span id="intestazione">Servono Indicazioni?</span></div>
           <div class="card-body">
 
             <div id="desc">
-              <h5 class="card-title"><span style="color:white; font-size: 30px;"><b>Ricerca Treni</b></span></h5>
-              <p class="card-text"><span style="color:white; font-size: 30px;">Utilizza questa pagina per cercare uno
+              <h5 class="card-title"><span id="testo"><b>Ricerca Treni</b></span></h5>
+              <p class="card-text"><span id="testo">Utilizza questa pagina per cercare uno
                   specifico viaggio!</span></p>
             </div>
           </div>
@@ -30,14 +22,15 @@
 
       <br>
 
-      <a href="/searchstation" style="text-decoration: none;">
-        <div id="searchStation" class="card text-white bg-info articoli" style="height:350px;">
-          <div class="card-header"><span style="font-size: 50px;">Cerchi una Stazione?</span></div>
+      <!--COMPONENTE RICERCA STAZIONI-->
+      <a routerLink="/searchstation">
+        <div id="searchStation" class="card text-white bg-info articoli">
+          <div class="card-header"><span id="intestazione">Cerchi una Stazione?</span></div>
           <div class="card-body">
 
             <div id="desc">
-              <h5 class="card-title"><span style="font-size: 30px;"><b>Ricerca Stazioni</b></span></h5>
-              <p class="card-text"><span style="font-size: 30px;">Visualizza delle specifiche<br>stazioni
+              <h5 class="card-title"><span id="testo"><b>Ricerca Stazioni</b></span></h5>
+              <p class="card-text"><span id="testo">Visualizza delle specifiche<br>stazioni
                   italiane!</span></p>
             </div>
           </div>
@@ -48,14 +41,15 @@
 
 
     <div class="col">
-      <a href="/map" style="text-decoration: none;">
-        <div id="mappa" class="card text-white bg-info articoli" style="height:350px;">
-          <div class="card-header"><span style="color:black; font-size: 50px;">Serve una Mappa?</span></div>
-          <div class="card-body">
 
+      <!--COMPONENTE MAPPA-->
+      <a routerLink="/map">
+        <div id="mappa" class="card text-white bg-info articoli">
+          <div class="card-header"><span id="intestazione">Serve una Mappa?</span></div>
+          <div class="card-body">
             <div id="desc">
-              <h5 class="card-title"><span style="color:black; font-size: 30px;"><b>Mappa</b></span></h5>
-              <p class="card-text"><span style="color:black; font-size: 30px;">Visualizza la tua ricerca nella nostra
+              <h5 class="card-title"><span id="testo"><b>Mappa</b></span></h5>
+              <p class="card-text"><span id="testo">Visualizza la tua ricerca nella nostra
                   mappa!</span></p>
             </div>
           </div>
@@ -64,14 +58,15 @@
 
       <br>
 
-      <a href="/routedictionary" style="text-decoration: none;">
-        <div id="routeDict" class="card text-white bg-info articoli" style="height:350px;">
-          <div class="card-header"><span style="font-size: 50px;">Cerchi un Treno Specifico?</span></div>
+      <!--COMPONENTE DIZIONARIO PERCORSI-->
+      <a routerLink="/routedictionary">
+        <div id="routeDict" class="card text-white bg-info articoli">
+          <div class="card-header"><span id="intestazione">Cerchi un Treno Specifico?</span></div>
           <div class="card-body">
 
             <div id="desc">
-              <h5 class="card-title"><span style="font-size: 30px;"><b>Dizionario Percorsi</b></span></h5>
-              <p class="card-text"><span style="font-size: 30px;">Consulta il nostro inedito Dizionario contenente la maggior parte dei codici delle tratte ferroviarie!</span></p>
+              <h5 class="card-title"><span id="testo"><b>Dizionario Percorsi</b></span></h5>
+              <p class="card-text"><span id="testo">Consulta il nostro inedito Dizionario contenente la maggior parte dei codici delle tratte ferroviarie!</span></p>
             </div>
           </div>
         </div>
