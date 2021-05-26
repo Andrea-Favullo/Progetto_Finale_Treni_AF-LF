@@ -182,6 +182,7 @@ router.get('/train-id/:trainID', function (req, res, next) {
 
         //recupero il body della pagina HTML e lo trasformo in un DOM
         body_from_JSON = JSON.parse(body)['message']
+        //res.send(body_from_JSON)
         const frag = JSDOM.fragment(body_from_JSON);
 
         //recupero quindi tutti i paragrafi
@@ -197,8 +198,21 @@ router.get('/train-id/:trainID', function (req, res, next) {
             
             //nome stazione
             let nome_stazione = stazione.item(0).textContent
+
             //arrivo alla stazione
-            let arrival_time = new String(new String(stazione.item(1).textContent).toString().replace("\n", "").trim()).split("\n")[1].trim().toString()
+            let is_suppressed = new String(new String(stazione.item(1)))
+            if(is_suppressed!="null"){
+                is_suppressed = new String(new String(stazione.item(1).textContent).toString().replace("\n", "").trim()).split("\n")[1]
+            }else{
+                is_suppressed = new String(new String(stazione.item(0).textContent).toString().replace("\n", "").trim()).split("\n")[1]
+            }
+            let arrival_time = new String()
+            
+            if (is_suppressed){
+                arrival_time = is_suppressed.trim().toString()
+            }else{
+                arrival_time = "Treno soppresso"
+            }
             
             let secondo_campo = ""
             if (i==0){
@@ -222,15 +236,11 @@ router.get('/train-id/:trainID', function (req, res, next) {
         }
 
         //metodi pulizia stringhe
-        /**mette la prima lettera di una stringa in maiuscolo
-         * @param {* string stringa da elaborare} string 
-         */
+        //mette la prima lettera di una stringa in maiuscolo
         function upperCaseFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
-        /**tutte le lettere di una stringa vengono trasformate in minuscolo
-         * @param {* string stringa da elaborare} string 
-         */
+        //tutte le lettere di una stringa vengono trasformate in minuscolo
         function lowerCaseAllWordsExceptFirstLetters(string) {
             return string.replace(/\S*/g, function (word) {
                 return word.charAt(0) + word.slice(1).toLowerCase();
