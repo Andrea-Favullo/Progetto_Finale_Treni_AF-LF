@@ -3,27 +3,29 @@
 
   <!--form di inserimento dei dati-->
   <!--INPUT: nomi stazioni-->
-  <p id="input_staz">
-    Inserisci <i>Stazione di Partenza</i> : <br>
-    <input type="text" #partenza value="" class="form-control w-25">
-    Inserisci <i>Stazione di Destinazione</i> : <br>
-    <input type="text" #destinazione value="" class="form-control w-25" id="dest">
-    <button (click)="richiestaPartenzaDestinazione(partenza, destinazione)" class="btn">
-      <img id="search_btn" width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png">
-    </button>
-  </p>
+  <div>
+    <p id="input_staz">
+      Inserisci <i>Stazione di Partenza</i> : <br>
+      <input type="text" #partenza value="" class="form-control w-25">
+      Inserisci <i>Stazione di Destinazione</i> : <br>
+      <input type="text" #destinazione value="" class="form-control w-25" id="dest">
+      <button (click)="richiestaPartenzaDestinazione(partenza, destinazione)" class="btn">
+        <img id="search_btn" width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png">
+      </button>
+    </p>
 
-  <h3>Oppure:</h3>
+    <h3>Oppure:</h3>
 
-  <!--INPUT: id treno-->
-  <p id="input_id">
-    Inserisci il <i>Numero del Treno</i> : <br>
-    <input type="text" #numerotreno value="" class="form-control w-25" id="dest">
-    <button (click)="richiestaIdTreno(numerotreno)" class="btn">
-      <img width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png" id="search_btn">
-    </button>
-  </p>
+    <!--INPUT: id treno-->
+    <p id="input_id">
+      Inserisci il <i>Numero del Treno</i> : <br>
+      <input type="text" #numerotreno value="" class="form-control w-25" id="dest">
+      <button (click)="richiestaIdTreno(numerotreno)" class="btn">
+        <img width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png" id="search_btn">
+      </button>
+    </p>
 
+  </div>
   <!--gif di caricamento-->
   <div id="loadingImage" *ngIf="isLoading()">
     <h3>Caricamento in corso ... <br> Attendere prego</h3>

@@ -9,7 +9,7 @@
 #loadingImage{
   position: absolute;
   top:40px;
-  left: 750px;
+  display: inline-block;
   background-color: white;
   width:fit-content;
 }
