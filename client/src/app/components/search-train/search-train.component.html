@@ -1,6 +1,8 @@
 <div class="main">
   <h1>Ricerca Treni</h1>
 
+  <!--form di inserimento dei dati-->
+  <!--INPUT: nomi stazioni-->
   <p id="input_staz">
     Inserisci <i>Stazione di Partenza</i> : <br>
     <input type="text" #partenza value="" class="form-control w-25">
@@ -11,20 +13,16 @@
     </button>
   </p>
 
-
-
   <h3>Oppure:</h3>
 
-
+  <!--INPUT: id treno-->
   <p id="input_id">
     Inserisci il <i>Numero del Treno</i> : <br>
     <input type="text" #numerotreno value="" class="form-control w-25" id="dest">
     <button (click)="richiestaIdTreno(numerotreno)" class="btn">
-      <img width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png"
-        id="search_btn">
+      <img width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png" id="search_btn">
     </button>
   </p>
-
 
   <!--gif di caricamento-->
   <div id="loadingImage" *ngIf="isLoading()">
@@ -33,8 +31,8 @@
   </div>
 
   <!--risultati ricerca-->
-  <!--TRENI DA X A Y-->
-  <div *ngIf ="tiporichiesta === 'PARTENZA_DEST'" class="card-columns">
+  <!--OUTPUT: soluzioni di viaggio dalla partenza alla destinazione-->
+  <div *ngIf="tiporichiesta === 'PARTENZA_DEST'" class="card-columns">
     <div *ngFor="let treno of dati" class="card card w-55">
 
       <div class="card-body text-center">
@@ -48,26 +46,30 @@
           </p>
         </li>
         <li class="list-group-item">
-          <h5>Partenza:</h5>{{this.ConvOrario(treno.departuretime)}}
+          <h5>Partenza:</h5>{{this.convOrario(treno.departuretime)}}
         </li>
         <li class="list-group-item">
           <h5>Durata del Viaggio:</h5>{{ this.toText(treno.duration) }}
         </li>
         <li class="list-group-item">
-          <h5>Arrivo:</h5>{{this.ConvOrario(treno.arrivaltime)}}
+          <h5>Arrivo:</h5>{{this.convOrario(treno.arrivaltime)}}
         </li>
         <li class="list-group-item">
 
-          <span *ngIf="treno.originalPrice || treno.minprice"> <h5>Prezzo Calcolato:</h5>{{treno.originalPrice}} € </span>
-          <span *ngIf="!treno.originalPrice || !treno.minprice"> <h5>Prezzo non trovato!</h5></span>
+          <span *ngIf="treno.originalPrice || treno.minprice">
+            <h5>Prezzo Calcolato:</h5>{{treno.originalPrice}} €
+          </span>
+          <span *ngIf="!treno.originalPrice || !treno.minprice">
+            <h5>Prezzo non trovato!</h5>
+          </span>
         </li>
       </ul>
 
     </div>
   </div>
 
-  <!--TRENI PER ID-->
-  <div *ngIf ="tiporichiesta === 'ID_TRENO'" class="card-columns">
+  <!--OUTPUT: dati sui treni che hanno un certo id-->
+  <div *ngIf="tiporichiesta === 'ID_TRENO'" class="card-columns">
     <div class="card card w-55">
       <div class="card-body text-center">
         <h4 class="card-title"><img src="{{dati.img_url}}" alt="tipotreno" height=50 width=50></h4>
@@ -98,7 +100,7 @@
   </div>
 
   <!--SE IL TRENO NON ESISTE:-->
-  <div *ngIf ="tiporichiesta === 'NON_ESISTE'" class="card-columns">
+  <div *ngIf="tiporichiesta === 'NON_ESISTE'" class="card-columns">
     <P>Il treno cercato non esiste</P>
   </div>
 

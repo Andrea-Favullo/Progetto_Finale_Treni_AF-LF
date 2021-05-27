@@ -1,11 +1,11 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 .main {
-  margin-left: 180px; /* Same as the width of the sidebar */
+  margin-left: 180px;
   padding: 0px 10px;
   font-family: "Microsoft Tai Le";
 }
-
+/*gif di caricamento*/
 #loadingImage{
   position: absolute;
   top:40px;
@@ -14,16 +14,20 @@
   width:fit-content;
 }
 
+/*tabella dei risultati*/
 .my-custom-scrollbar {
   position: relative;
   height: 650px;
   overflow: auto;
 }
-
 .table-wrapper-scroll-y {
   display: block;
 }
+.table_text{
+  text-align: center;
+}
 
+/*form di inserimento dati*/
 #input_nomeStaz #nome{
   display: inline-block;
 }
@@ -31,8 +35,4 @@
   width:50px;
   height:50px;
   display: inline-block;
-}
-
-.table_text{
-  text-align: center;
 }

@@ -1,13 +1,15 @@
 <div class="main">
   <h1>Mappa</h1>
+
+  <!--form di inserimento dati-->
   <p id="input_staz">
     Inserisci il <i>Nome della Stazione</i> :<br>
     <input type="text" #nomestazione value="" class="form-control w-25" id="nome">
     <button (click)="richiestaPosizioneStazione(nomestazione)" class="btn">
-      <img width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png"
-        id="search_btn">
+      <img width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png" id="search_btn">
     </button>
   </p>
+
   <!--Mappa di Leaflet-->
   <div class="map-container">
     <div class="map-frame">

@@ -8,6 +8,7 @@ import { TrenitaliaProvaService } from "../../API-REST/trenitalia.service";
   styleUrls: ['./search-train.component.css']
 })
 export class SearchTrainComponent implements OnInit {
+  //variabili
   title = 'client';
   obs: Observable<Object> | undefined;
   dati: any;
@@ -18,25 +19,27 @@ export class SearchTrainComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  //metodi sullo stato di caricamento
+  //restituisce se l'applicazione sta caricando
   isLoading(): boolean {
     return this.loading;
   }
-
+  //dico che l'applicazione sta caricando
   onRequestStarted(): void {
     this.loading = true;
     console.log(`sta caricando`);
   }
-
+  //dico che l'applicazione non sta caricando
   onRequestFinished(): void {
     this.loading = false;
     console.log(`non sta caricando`);
   }
-
-  ConvOrario(ms: any): any {
+  //converto l'orario da millisecondi al normale formato della data
+  convOrario(ms: any): any {
     var date = new Date(ms);
     return date;
   }
-
+  //tutte le parole avranno l'iniziale maiuscola
   capitalizeWords(text: string): string {
     text = text.toLowerCase();
     return text.replace(/(?:^|\s)\S/g, (res) => {
@@ -44,6 +47,7 @@ export class SearchTrainComponent implements OnInit {
     })
   };
 
+  //richiesta esempio
   richiesta(): void {
     this.tiporichiesta = "STANDBY";
     this.onRequestStarted();
@@ -56,13 +60,13 @@ export class SearchTrainComponent implements OnInit {
     });
   }
 
+  //recupero i dati sui treni in base a due stazioni specificate
   richiestaPartenzaDestinazione(partenza: HTMLInputElement, destinazione: HTMLInputElement): void {
     this.tiporichiesta = "STANDBY";
     this.onRequestStarted();
     if (partenza.value.replace(" ", "") == "" || destinazione.value.replace(" ", "") == "") {
       this.richiesta();
     } else {
-
       this.obs = this.trenitalia.ricercaPartenzaArrivo(partenza.value, destinazione.value);
       this.obs.subscribe((data) => {
         this.dati = data;
@@ -74,13 +78,14 @@ export class SearchTrainComponent implements OnInit {
     }
   }
 
+  //recupero i dati sui treni in base ad un id
   richiestaIdTreno(id: HTMLInputElement): void {
     this.tiporichiesta = "STANDBY";
     this.dati = [];
     this.onRequestStarted();
     let id_value = id.value;
     if (id_value.replace(" ", "") == "") {
-      id_value="10581"
+      id_value = "10581"
     }
     this.obs = this.trenitalia.ricercaIdTreno(id_value);
     this.obs.subscribe((data: any) => {
@@ -97,6 +102,7 @@ export class SearchTrainComponent implements OnInit {
     });
 
   }
+  //converto in un formato più leggibile la durata del viaggio
   toText(duration: string): string {
 
     let splitted = duration.split(":");
@@ -105,12 +111,10 @@ export class SearchTrainComponent implements OnInit {
     let minuti = splitted[1];
 
     if (ore != "00") {
-
       if (ore.charAt(0) == "0") {
         ore = ore.charAt(1)
       }
       result = result + ore + " ore "
-
       if (minuti.charAt(0) == "0") {
         minuti = minuti.charAt(1)
       }

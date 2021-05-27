@@ -1,22 +1,20 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 .main {
-  margin-left: 180px; /* Same as the width of the sidebar */
+  margin-left: 180px;
   padding: 0px 10px;
   font-family: "Microsoft Tai Le";
 }
 
 .card {
-  /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
 }
-
-/* On mouse-over, add a deeper shadow */
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+/*gif di caricamento*/
 #loadingImage{
   position: absolute;
   top:100px;
@@ -25,6 +23,8 @@
   width:fit-content;
 }
 
+/*form inserimento dati*/
+/*in base alle due stazioni*/
 #input_staz #dest{
   display: inline-block;
 }
@@ -33,7 +33,7 @@
   height:50px;
   display: inline-block;
 }
-
+/*id del treno*/
 #input_id #dest{
   display: inline-block;
 }

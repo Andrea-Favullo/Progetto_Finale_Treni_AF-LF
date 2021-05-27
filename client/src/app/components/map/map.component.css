@@ -1,11 +1,11 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 .main {
-  margin-left: 180px; /* Same as the width of the sidebar */
+  margin-left: 180px;
   padding: 0px 10px;
   font-family: "Microsoft Tai Le";
 }
-
+/*mappa*/
 .map-container {
   padding:30px 0px; /* sposta la mappa */
   position: absolute;
@@ -15,18 +15,16 @@
   bottom: 0;
   margin: 200px;
 }
-
 .map-frame {
   border: 0px solid black;
   height: 110%;
   width: 70%;
 }
-
 #map {
   height: 110%;
   width: 70%;
 }
-
+/*form di inserimento dati*/
 #input_staz #nome{
   display: inline-block;
 }

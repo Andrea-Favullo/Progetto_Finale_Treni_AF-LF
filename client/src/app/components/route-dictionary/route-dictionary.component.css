@@ -1,11 +1,12 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 .main {
-  margin-left: 180px; /* Same as the width of the sidebar */
+  margin-left: 180px;
   padding: 0px 10px;
   font-family: "Microsoft Tai Le";
 }
 
+/*gif di caricamento*/
 #loadingImage{
   position: absolute;
   top:100px;
@@ -14,16 +15,20 @@
   width:fit-content;
 }
 
+/*tabella risultati dati*/
 .my-custom-scrollbar {
-position: relative;
-height: 450px;
-overflow: auto;
+  position: relative;
+  height: 450px;
+  overflow: auto;
 }
-
 .table-wrapper-scroll-y {
-display: block;
+  display: block;
+}
+.table_text{
+  text-align: center;
 }
 
+/*form di inserimento dati*/
 #input_id #id{
   display: inline-block;
 }
@@ -36,10 +41,7 @@ display: block;
   display: inline-block;
 }
 
+/*paragrafo che mostra il range di valori*/
 #range{
   font-size: 50px;
-}
-
-.table_text{
-  text-align: center;
 }
