@@ -10,6 +10,8 @@
   position: absolute;
   top:100px;
   left: 800px;
+  background-color: white;
+  width:fit-content;
 }
 
 .my-custom-scrollbar {
@@ -20,4 +22,24 @@ overflow: auto;
 
 .table-wrapper-scroll-y {
 display: block;
+}
+
+#input_id #id{
+  display: inline-block;
+}
+#input_id .btn .search_btn{
+  display: inline-block;
+}
+#input_id .search_btn{
+  width:50px;
+  height:50px;
+  display: inline-block;
+}
+
+#range{
+  font-size: 50px;
+}
+
+.table_text{
+  text-align: center;
 }

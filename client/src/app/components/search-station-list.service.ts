@@ -4,16 +4,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SearchStationListService {
-  stationsList : any;
+  stationsList: any;
   constructor() { }
 
-  getStationList()
-  {
+  getStationList() {
     return this.stationsList;
   }
 
-  setStationList(sl : any)
-  {
+  setStationList(sl: any) {
     this.stationsList = sl;
   }
 }

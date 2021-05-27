@@ -1,37 +1,38 @@
 <div class="main">
   <h1>Ricerca Stazioni</h1>
   <br>
-  <p>
+  <p id="input_nomeStaz">
     Inserisci il <i>Nome della Stazione</i> :<br>
-    <input type="text" #nomestazione value="" class="form-control w-25" style="display: inline-block;">
+    <input type="text" #nomestazione value="" class="form-control w-25" id="nome">
     <button (click)="richiestaNomeStazione(nomestazione)" class="btn">
       <img width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png"
-        style="width:50px; height:50px; display: inline-block;">
+        id="search_btn">
     </button>
   </p>
 
   <!--gif di caricamento-->
-  <div id="loadingImage" *ngIf="isLoading()" style="background-color: white; width:fit-content;">
+  <div id="loadingImage" *ngIf="isLoading()">
     <h3>Caricamento in corso ... <br> Attendere prego</h3>
     <img width="350px" src="https://i.kym-cdn.com/photos/images/original/000/630/914/b51.gif">
   </div>
 
   <br><br><br>
 
+  <!--tabella risultati-->
   <div class="table-wrapper-scroll-y my-custom-scrollbar">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col" style="text-align: center;">id</th>
-          <th scope="col" style="text-align: center;">Stazione</th>
-          <th scope="col" style="text-align: center;">Regione</th>
+          <th scope="col" class="table_text">id</th>
+          <th scope="col" class="table_text">Stazione</th>
+          <th scope="col" class="table_text">Regione</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let stazione of dati">
-          <th scope="row" style="text-align: center;">{{stazione.id_staz}}</th>
-          <td style="text-align: center;">{{stazione.name}}</td>
-          <td style="text-align: center;">{{stazione.regione}}</td>
+          <th scope="row" class="table_text">{{stazione.id_staz}}</th>
+          <td class="table_text">{{stazione.name}}</td>
+          <td class="table_text">{{stazione.regione}}</td>
         </tr>
       </tbody>
     </table>

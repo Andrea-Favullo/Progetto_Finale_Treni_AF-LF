@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TrenitaliaProvaService } from './trenitalia-apirest.service';
+import { TrenitaliaProvaService } from './trenitalia.service';
 
 describe('TrenitaliaProvaService', () => {
   let service: TrenitaliaProvaService;

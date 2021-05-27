@@ -10,8 +10,8 @@ import { SearchStationComponent } from './search-station/search-station.componen
 import { RouteDictionaryComponent } from './route-dictionary/route-dictionary.component';
 import { AgmCoreModule } from '@agm/core';
 import { MapComponent } from './map/map.component';
-import { MarkerService } from './marker.service';
-import { PopupService } from './popup.service';
+import { MarkerService } from '../leaflet-services/marker.service';
+import { PopupService } from '../leaflet-services/popup.service';
 
 @NgModule({
   declarations: [

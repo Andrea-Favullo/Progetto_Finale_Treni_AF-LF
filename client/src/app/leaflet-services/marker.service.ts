@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TrenitaliaProvaService } from "./trenitalia-apirest.service";
+import { TrenitaliaProvaService } from "../API-REST/trenitalia.service";
 import * as L from 'leaflet';
 import { Observable } from 'rxjs';
 import { PopupService } from './popup.service';

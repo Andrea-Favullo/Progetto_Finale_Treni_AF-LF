@@ -1,14 +1,13 @@
 <div class="main">
   <h1>Ricerca Treni</h1>
 
-  <p>
+  <p id="input_staz">
     Inserisci <i>Stazione di Partenza</i> : <br>
     <input type="text" #partenza value="" class="form-control w-25">
     Inserisci <i>Stazione di Destinazione</i> : <br>
-    <input type="text" #destinazione value="" class="form-control w-25" style="display: inline-block;">
+    <input type="text" #destinazione value="" class="form-control w-25" id="dest">
     <button (click)="richiestaPartenzaDestinazione(partenza, destinazione)" class="btn">
-      <img width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png"
-        style="width:50px; height:50px; display: inline-block;">
+      <img id="search_btn" width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png">
     </button>
   </p>
 
@@ -17,28 +16,27 @@
   <h3>Oppure:</h3>
 
 
-  <p>
+  <p id="input_id">
     Inserisci il <i>Numero del Treno</i> : <br>
-    <input type="text" #numerotreno value="" class="form-control w-25" style="display: inline-block;">
+    <input type="text" #numerotreno value="" class="form-control w-25" id="dest">
     <button (click)="richiestaIdTreno(numerotreno)" class="btn">
       <img width="125px" src="https://i.ibb.co/vH9vJ2D/search-button.png"
-        style="width:50px; height:50px; display: inline-block;">
+        id="search_btn">
     </button>
   </p>
 
 
   <!--gif di caricamento-->
-  <div id="loadingImage" *ngIf="isLoading()" style="background-color: white; width:fit-content;">
+  <div id="loadingImage" *ngIf="isLoading()">
     <h3>Caricamento in corso ... <br> Attendere prego</h3>
     <img width="500px" src="https://i.kym-cdn.com/photos/images/original/000/630/914/b51.gif">
   </div>
 
+  <!--risultati ricerca-->
+  <!--TRENI DA X A Y-->
   <div *ngIf ="tiporichiesta === 'PARTENZA_DEST'" class="card-columns">
     <div *ngFor="let treno of dati" class="card card w-55">
-      <!--		<div *ngIf="treno.poster; else elseBlock1"> <img class="card-img-top" alt="Movie Poster" [src]="photoURL(movie.poster)"> </div> -->
-      <!--         <ng-template #elseBlock1>
-                <span class="alert alert-info" role="alert"><strong>Info!</strong> Immagine mancante</span>
-            </ng-template>-->
+
       <div class="card-body text-center">
         <h4 class="card-title">{{treno.origin}} <br /> {{treno.destination}}</h4>
       </div>
@@ -68,6 +66,7 @@
     </div>
   </div>
 
+  <!--TRENI PER ID-->
   <div *ngIf ="tiporichiesta === 'ID_TRENO'" class="card-columns">
     <div class="card card w-55">
       <div class="card-body text-center">
@@ -77,9 +76,6 @@
         <li class="list-group-item">
           <h5 class="font-weight-bold">Treno Numero: {{dati.train_id}}</h5>
         </li>
-        <!--<li class="list-group-item">
-          <h5>Partenza: {{dati.departure_st}}</h5>
-        </li>-->
         <li class="list-group-item">
           <h5>Ferma a:</h5>
           <div *ngFor="let fermate of dati.middle_stations">
@@ -97,20 +93,13 @@
             </span>
           </div>
         </li>
-        <!--<li class="list-group-item">
-          <h5>Arrivo: {{dati.arrival_st}}</h5>
-        </li>-->
-
       </ul>
     </div>
   </div>
 
+  <!--SE IL TRENO NON ESISTE:-->
   <div *ngIf ="tiporichiesta === 'NON_ESISTE'" class="card-columns">
     <P>Il treno cercato non esiste</P>
   </div>
 
 </div>
-
-
-
-<!--{{dati | json}} -->

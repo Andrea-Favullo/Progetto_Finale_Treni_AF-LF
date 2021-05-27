@@ -1,0 +1,51 @@
+<div class="main">
+
+  <h1>Dizionario Percorsi</h1>
+
+  <!--gif di caricamento-->
+  <div id="loadingImage" *ngIf="isLoading()">
+    <h3>Caricamento in corso ... <br> Attendere prego</h3>
+    <img width="500px" src="https://i.kym-cdn.com/photos/images/original/000/630/914/b51.gif">
+  </div>
+
+  <!--form di input-->
+  <p id="input_id">
+    Inserisci il <i>Codice del Treno</i> : <br>
+    <input type="text" #treno value="" class="form-control w-25" id="id">
+    <button (click)="richiestaIdTreno(treno)" class="btn search_btn">
+      <img src="https://i.ibb.co/vH9vJ2D/search-button.png"
+        class="search_btn">
+    </button>
+  </p>
+
+  <!--bottoni avanti e indietro-->
+  <button (click)="listdietro()" class="btn"><img width="125px" src="https://i.ibb.co/VqV9Kj0/left-arrow.png"></button>
+  &nbsp; &nbsp;
+  <button (click)="listavanti()" class="btn"><img width="125px" src="https://i.ibb.co/zPf89TG/right-arrow.png"></button>
+  <br><br>
+
+  <!--range-->
+  <p id="range" class="font-weight-bold">Da {{this.minnum}} a {{this.maxnum}}</p>
+
+  <!--risultati-->
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" class="table_text">Codice Treno</th>
+          <th scope="col" class="table_text">Tipo di Treno</th>
+          <th scope="col" class="table_text">Stazione di Partenza</th>
+          <th scope="col" class="table_text">Stazione di Destinazione</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let treno of dati">
+          <th scope="row" class="table_text">{{treno.train_id}}</th>
+          <td class="table_text"><img src="{{treno.img_url}}" alt="tipotreno" height=50 width=50></td>
+          <td class="table_text">{{treno.departure_st}}</td>
+          <td class="table_text">{{treno.arrival_st}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

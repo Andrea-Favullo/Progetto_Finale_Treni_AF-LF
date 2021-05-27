@@ -5,14 +5,16 @@
 <div class="sidenav">
   <div class="sidenav-heading">No Train, <br> No Rail </div>
 
+  <!--link agli altri componenti-->
   <a routerLink="/home">Pagina Principale</a>
   <a routerLink="/searchtrain">Ricerca Treni</a>
   <a routerLink="/searchstation">Ricerca Stazioni</a>
   <a routerLink="/map">Mappa</a>
   <a routerLink="/routedictionary">Dizionario Percorsi</a>
 
+  <!--crediti-->
   <div class="TEST" id="credits">
-    <hr style="border: 2px solid black; width:125%">
+    <hr id="credits-hr">
     <div id="credits-image">
       <img width="100px" src="https://i.ibb.co/NrjKjXP/logo-sito.png">
     </div>
@@ -23,10 +25,8 @@
     </a>
   </div>
 </div>
-<router-outlet>
 
-
-</router-outlet>
+<router-outlet></router-outlet>
 
 
 
